@@ -29,7 +29,7 @@ public class SupervisorDAO {
       public boolean addSupervisor(Supervisor supervisor) throws SQLException {
         boolean result = false;
         Connection connection = DbUtil.getConnection();
-        String query = "insert into supervisor (id_supervisor,nombre_supervidor,apellido_supervisor,fecha_Entrada) values (?,?,? );";
+        String query = "insert into supervisor (supervisor.id_supervisor,supervisor.nombre_supervidor,supervisor.apellido_supervisor,fecha_Entrada) values (?,?,? );";
         PreparedStatement preparedStmt = null;
         try {
             preparedStmt = connection.prepareStatement(query);

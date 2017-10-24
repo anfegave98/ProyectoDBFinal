@@ -30,7 +30,7 @@ public class ActivoDAO {
     public boolean addActivo(Activo activo) throws SQLException {
         boolean result = false;
         Connection connection = DbUtil.getConnection();
-        String query = "insert into activo (id_activo,tipo,fabricante,fecha_compra,ultimo_mantenimiento,estado,prestado,calificacion) values (?,?,?,?,?,?,?,? );";
+        String query = "insert into activo (activo.id_activo,activo.tipo,activo.fabricante,activo.fecha_compra,activo.ultimo_mantenimiento,activo.estado,activo.prestado,activo.calificacion) values (?,?,?,?,?,?,?,? );";
         PreparedStatement preparedStmt = null;
         try {
             preparedStmt = connection.prepareStatement(query);
