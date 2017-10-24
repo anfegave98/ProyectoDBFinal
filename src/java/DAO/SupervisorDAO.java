@@ -29,14 +29,14 @@ public class SupervisorDAO {
       public boolean addSupervisor(Supervisor supervisor) throws SQLException {
         boolean result = false;
         Connection connection = DbUtil.getConnection();
-        String query = "insert into supervisor (supervisor.id_supervisor,supervisor.nombre_supervidor,supervisor.apellido_supervisor,fecha_Entrada) values (?,?,? );";
+        String query = "insert into supervisor (supervisor.id_supervisor,supervisor.nombre_supervidor,supervisor.apellido_supervisor,fecha_Entrada) values (?,?,?,? );";
         PreparedStatement preparedStmt = null;
         try {
             preparedStmt = connection.prepareStatement(query);
             preparedStmt.setInt(1, supervisor.getId());
             preparedStmt.setString(2, supervisor.getNombre());
-            preparedStmt.setString(2, supervisor.getApellido());
-            preparedStmt.setString(2, supervisor.getFechaEntrada());
+            preparedStmt.setString(3, supervisor.getApellido());
+            preparedStmt.setString(4, supervisor.getFechaEntrada());
             result = preparedStmt.execute();
         } catch (SQLException e) {
             e.printStackTrace();
