@@ -7,22 +7,12 @@ package Model;
 
 /**
  *
- * @author anfeg
+ * @author Labin
  */
-public class Auxiliar extends Trabajador {
-    private String turno;
-
-    public Auxiliar(int id, String nombre, String apellido, String fechaEntrada, String turno) {
+public class Supervisor extends Trabajador {
+    
+    public Supervisor(int id, String nombre, String apellido, String fechaEntrada) {
         super(id, nombre, apellido, fechaEntrada);
-        this.turno=turno;
-    }
-
-    public String getTurno() {
-        return turno;
-    }
-
-    public void setTurno(String turno) {
-        this.turno = turno;
     }
 
     public String getFechaEntrada() {
@@ -56,6 +46,5 @@ public class Auxiliar extends Trabajador {
     public void setApellido(String apellido) {
         this.apellido = apellido;
     }
-    
     
 }

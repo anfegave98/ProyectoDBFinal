@@ -16,15 +16,17 @@ public class Activo {
     private String fecha_compra;
     private String ultimo_mantenimiento;
     private String estado;
+    private String prestado;
     private int calificacion;
 
-    public Activo(int id_activo, String tipo, String fabricante, String fecha_compra, String ultimo_mantenimiento, String estado, int calificacion) {
+    public Activo(int id_activo, String tipo, String fabricante, String fecha_compra, String ultimo_mantenimiento, String estado, String prestado, int calificacion) {
         this.id_activo = id_activo;
         this.tipo = tipo;
         this.fabricante = fabricante;
         this.fecha_compra = fecha_compra;
         this.ultimo_mantenimiento = ultimo_mantenimiento;
         this.estado = estado;
+        this.prestado = prestado;
         this.calificacion = calificacion;
     }
 
@@ -76,6 +78,14 @@ public class Activo {
         this.estado = estado;
     }
 
+    public String getPrestado() {
+        return prestado;
+    }
+
+    public void setPrestado(String prestado) {
+        this.prestado = prestado;
+    }
+
     public int getCalificacion() {
         return calificacion;
     }
@@ -83,6 +93,10 @@ public class Activo {
     public void setCalificacion(int calificacion) {
         this.calificacion = calificacion;
     }
+    
+    
+
+   
     
     
 }
