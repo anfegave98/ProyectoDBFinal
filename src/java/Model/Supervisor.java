@@ -47,4 +47,7 @@ public class Supervisor extends Trabajador {
         this.apellido = apellido;
     }
     
+    
+    
+    
 }
