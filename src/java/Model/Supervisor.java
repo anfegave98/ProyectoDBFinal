@@ -15,5 +15,9 @@ public class Supervisor extends Trabajador {
         super(id, nombre, apellido, fechaEntrada);
     }
 
+    public Supervisor() {
+        super();
+    }
+
     
 }

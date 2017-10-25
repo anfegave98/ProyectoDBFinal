@@ -17,6 +17,11 @@ public abstract class Trabajador extends Persona {
         this.fechaEntrada = fechaEntrada;
     }
 
+    public Trabajador() {
+        super();
+    }
+    
+
     public String getFechaEntrada() {
         return fechaEntrada;
     }
