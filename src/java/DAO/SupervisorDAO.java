@@ -110,6 +110,47 @@ public class SupervisorDAO {
         return supervisor;
 
     }
+        
+        public Supervisor getSupervisorId(int a) throws SQLException {
+        Supervisor supervisor = null;
+        boolean result = false;
+        String query = "select * from supervisor where id_supervisor = ?";
+        Connection connection = DbUtil.getConnection();
+        try {
+            Statement st = connection.createStatement();
+            ResultSet rs = st.executeQuery(query);
+
+            int id = 0;
+            String nombre = null;
+            String apellido = null;
+            String fecha_Entrada = null;
+
+            while (rs.next()) {
+             
+                id = rs.getInt("id_supervisor");
+                supervisor.setId(id);
+
+                nombre = rs.getString("nombre_supervisor");
+                supervisor.setNombre(nombre);
+                
+                apellido = rs.getString("apellido_supervisor");
+                supervisor.setApellido(nombre);
+
+                fecha_Entrada = rs.getString("fecha_entrada");
+                supervisor.setNombre(nombre);
+            }
+           
+            st.close();
+
+        } catch (SQLException e) {
+            System.out.println("Problemas al obtener el supervisor");
+            e.printStackTrace();
+        }
+
+        return supervisor;
+
+    }
+
        
     
     

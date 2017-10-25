@@ -9,7 +9,12 @@ import Model.Auxiliar;
 import Model.Supervisor;
 import Util.DbUtil;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -26,14 +31,19 @@ public class AuxiliarDAO {
     
      public boolean addAuxiliar(Auxiliar auxiliar) throws SQLException {
         boolean result = false;
-        Supervisor supervisor = auxiliar.get
         Connection connection = DbUtil.getConnection();
-        String query = "insert into tabla (tabla.nombre_tabla,tabla.id_esquema) values (?, ? );";
+        String query = "insert into auxiliar (auxiliar.id_auxiliar,auxiliar.nombre_auxiliar,auxiliar.apellido,auxiliar.fecha_entrada,auxiliar.turno,auxiliar.id_supervisor) values (?,?,?,?,?,?);";
+        Supervisor supervisor = auxiliar.getSupervisor();
         PreparedStatement preparedStmt = null;
         try {
+            
             preparedStmt = connection.prepareStatement(query);
-            preparedStmt.setString(1, auxiliar.getNombre_tabla());
-            preparedStmt.setInt(2, auxiliar.getId_esquema());
+            preparedStmt.setInt(1, auxiliar.getId());
+            preparedStmt.setString(2, auxiliar.getNombre());
+            preparedStmt.setString(3, auxiliar.getApellido());
+            preparedStmt.setString(4, auxiliar.getFechaEntrada());
+            preparedStmt.setString(5, auxiliar.getTurno());
+            preparedStmt.setInt(6, auxiliar.getSupervisor().getId());
             result = preparedStmt.execute();
         } catch (SQLException e) {
             e.printStackTrace();
@@ -41,5 +51,81 @@ public class AuxiliarDAO {
         return result;
     }
 
+      public boolean deleteAuxiliar(int a) throws SQLException {
+        boolean result = false;
+        Connection connection = DbUtil.getConnection();
+        String query = "delete from auxiliar where id_auxiliar = ?";
+        PreparedStatement preparedStmt = null;
+        try {
+            preparedStmt = connection.prepareStatement(query);
+            preparedStmt.setInt(1, a);
+            result = preparedStmt.execute();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
 
+        return result;
+    }
+      
+      public List<Auxiliar> getAllAuxiliar() throws SQLException {
+        List<Auxiliar> auxiliar = null;
+        boolean result = false;
+        String query = "SELECT * FROM auxiliar";
+        Connection connection = DbUtil.getConnection();
+        try {
+
+            Statement st = connection.createStatement();
+            ResultSet rs = st.executeQuery(query);
+
+         int id=0;
+         String nombre = null;
+         String apellido = null;
+         String fechaEntrada = null;
+         String turno = null;
+         int supervisorID = 0;
+         Supervisor supervisor = null;
+            while (rs.next()) {
+                if (auxiliar == null) {
+                    auxiliar = new ArrayList<Auxiliar>();
+                }
+                Auxiliar registro = new Auxiliar(id, nombre, apellido, fechaEntrada, turno, supervisor);
+                id = rs.getInt("id_auxiliar");
+                registro.setId(id);
+
+                nombre = rs.getString("nombre_auxiliar");
+                registro.setNombre(nombre);
+
+                apellido= rs.getString("apellido_auxiliar");
+                registro.setApellido(apellido);
+                
+                fechaEntrada= rs.getString("fecha_entrada");
+                registro.setFechaEntrada(fechaEntrada);
+                
+                turno = rs.getString("turno");
+                registro.setApellido(apellido);
+               
+                supervisorID =  rs.getInt("id_supervisor");
+                SupervisorDAO dao = new SupervisorDAO();
+                
+                supervisor = dao.getSupervisorId(supervisorID);
+                registro.setSupervisor(supervisor);
+
+                auxiliar.add(registro);
+
+            }
+            if (auxiliar != null) {
+                for (int i = 0; i < auxiliar.size(); i++) {
+                    System.out.println(auxiliar.get(i).getId() + " " + auxiliar.get(i).getNombre() + " " + auxiliar.get(i).getApellido()+ " " + auxiliar.get(i).getFechaEntrada()+ " " + auxiliar.get(i).getSupervisor().getNombre());
+                }
+            }
+            st.close();
+
+        } catch (SQLException e) {
+            System.out.println("Problemas al obtener la lista de Auxiliares");
+            e.printStackTrace();
+        }
+
+        return auxiliar;
+
+    }
 }
