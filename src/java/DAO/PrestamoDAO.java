@@ -80,7 +80,7 @@ public class PrestamoDAO {
            int id_prestamo = 0;
            int id_solicitante = 0;
            int id_trabajador = 0;
-           ArrayList<Integer> activo =null ;
+           ArrayList<Integer> activo = new ArrayList<Integer>();
            String tipo = null;
            String fechaEntrada = null;
            String fechaSalida = null;
@@ -98,7 +98,14 @@ public class PrestamoDAO {
                 id_trabajador = rs.getInt("id_trabajador");
                 registro.setId_prestamo(id_trabajador);
                 
-                activo = (ArrayList<Integer>) rs.getArray("id_activo"); //OJO
+                String queryActivo = "SELECT activo FROM prestamo where id_prestamo = "+ id_prestamo;
+                ResultSet rsActivo = st.executeQuery(queryActivo);
+                
+                while(rsActivo.next()){
+                    int idActivo=rsActivo.getInt("id_activo");
+                    activo.add(idActivo);
+                }
+               
                 registro.setActivo(activo);
                 
                 tipo= rs.getString("tipo");
