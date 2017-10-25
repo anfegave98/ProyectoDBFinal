@@ -77,45 +77,45 @@
                     <p></p>
                     <hr>
                     <div class="container">   
-                        <form class="form-inline">
+                        <form class="form-inline" action="AñadirActivos" method="POST">
                             <div class="form-group">
                                 <label for="idequipo">ID Activo:</label>
-                                <input  class="form-control" id="idequipo">
+                                <input  class="form-control" name="idActivo">
                             </div>
                             <div class="form-group">
                                 <label for="nombre">Tipo:</label>
-                                <input  class="form-control" id="nombre">
+                                <input  class="form-control" name="tipo">
                             </div>
                             <div class="form-group">
                                 <label for="calificacion">Fabricante:</label>
-                                <input  class="form-control" id="calificacion">
+                                <input  class="form-control" name="fabricante">
                             </div>
                             <div class="span12">&nbsp;</div>
                             <div class="form-group">
                                 <label for="fechaC">Fecha Compra:</label>
-                                <input  class="form-control" id="fechaC">
+                                <input  class="form-control" name="fechaC">
                             </div>
                             <div class="form-group">
                                 <label for="prestaso">Ultimo Mant.:</label>
-                                <input  class="form-control" id="prestado">
+                                <input  class="form-control" name="mantenimiento">
                             </div>
                             <div class="form-group">
                                 <label for="tipo">Estado</label>
-                                <select class="form-control" id="tipo">
+                                <select class="form-control" name="estado">
                                     <option>True</option>
                                     <option>False</option>
                                 </select>
                             </div>
                             <div class="form-group">
                                 <label for="tipo">Prestado</label>
-                                <select class="form-control" id="tipo">
+                                <select class="form-control" name="prestado">
                                     <option>True</option>
                                     <option>False</option>
                                 </select>
                             </div>
                             <div class="form-group">
                                 <label for="tipo">Calificación</label>
-                                <select class="form-control" id="tipo">
+                                <select class="form-control" name="calificacion">
                                     <option>1</option>
                                     <option>2</option>
                                     <option>3</option>
@@ -127,7 +127,7 @@
 
                             <br>
                             <div class="span12">&nbsp;</div>
-                            <button type="submit" class="btn btn-default">Enviar</button>
+                            <button type="submit" class="btn btn-default" name="Enviar">Enviar</button>
                         </form>
                     </div>
                 </div>
