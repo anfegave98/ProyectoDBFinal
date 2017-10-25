@@ -21,12 +21,13 @@ import java.util.List;
  * @author Labin
  */
 public class ActivoDAO {
+
     private Connection connection;
 
     public ActivoDAO() throws SQLException {
         connection = DbUtil.getConnection();
     }
-    
+
     public boolean addActivo(Activo activo) throws SQLException {
         boolean result = false;
         Connection connection = DbUtil.getConnection();
@@ -42,15 +43,14 @@ public class ActivoDAO {
             preparedStmt.setString(6, activo.getEstado());
             preparedStmt.setString(7, activo.getPrestado());
             preparedStmt.setInt(8, activo.getCalificacion());
-            
-            
+
             result = preparedStmt.execute();
         } catch (SQLException e) {
             e.printStackTrace();
         }
         return result;
     }
-    
+
     public boolean deleteActivo(int a) throws SQLException {
         boolean result = false;
         Connection connection = DbUtil.getConnection();
@@ -66,8 +66,8 @@ public class ActivoDAO {
 
         return result;
     }
-    
-     public ArrayList<Activo> getAllActivo() throws SQLException {
+
+    public ArrayList<Activo> getAllActivo() throws SQLException {
         ArrayList<Activo> activo = null;
         boolean result = false;
         String query = "SELECT * FROM activo";
@@ -95,33 +95,31 @@ public class ActivoDAO {
 
                 tipo = rs.getString("tipo");
                 registro.setTipo(tipo);
-                
+
                 fabricante = rs.getString("fabricante");
                 registro.setFabricante(fabricante);
 
                 fecha_compra = rs.getString("fecha_compra");
                 registro.setFecha_compra(fecha_compra);
-                
+
                 ultimo_mantenimiento = rs.getString("ultimo_mantenimiento");
                 registro.setUltimo_mantenimiento(ultimo_mantenimiento);
-                
+
                 estado = rs.getString("estado");
                 registro.setEstado(estado);
-                
+
                 ultimo_mantenimiento = rs.getString("prestado");
                 registro.setPrestado(prestado);
-                
+
                 calificacion = rs.getInt("calificacion");
                 registro.setUltimo_mantenimiento(ultimo_mantenimiento);
-
-
 
                 activo.add(registro);
 
             }
             if (activo != null) {
                 for (int i = 0; i < activo.size(); i++) {
-                    System.out.println(activo.get(i).getId_activo() + " " + activo.get(i).getTipo() + " " + activo.get(i).getFabricante() + " " + activo.get(i).getFecha_compra()+ " " + activo.get(i).getUltimo_mantenimiento()+ " " + activo.get(i).getPrestado()+ " " + activo.get(i).getCalificacion());
+                    System.out.println(activo.get(i).getId_activo() + " " + activo.get(i).getTipo() + " " + activo.get(i).getFabricante() + " " + activo.get(i).getFecha_compra() + " " + activo.get(i).getUltimo_mantenimiento() + " " + activo.get(i).getPrestado() + " " + activo.get(i).getCalificacion());
                 }
             }
             st.close();
@@ -134,5 +132,59 @@ public class ActivoDAO {
         return activo;
 
     }
-    
+
+    public Activo getActivoID(int a) throws SQLException {
+        boolean result = false;
+        String query = "SELECT * FROM activo where id_activo=" + a;
+        Connection connection = DbUtil.getConnection();
+        
+            int id = 0;
+            String tipo = null;
+            String fabricante = null;
+            String fecha_compra = null;
+            String ultimo_mantenimiento = null;
+            String estado = null;
+            String prestado = null;
+            int calificacion = 0;
+
+        Activo registro = new Activo(id, tipo, fabricante, fecha_compra, ultimo_mantenimiento, estado, prestado, calificacion);
+        try {
+            Statement st = connection.createStatement();
+            ResultSet rs = st.executeQuery(query);
+
+            id = rs.getInt("id_activo");
+            registro.setId_activo(id);
+
+            tipo = rs.getString("tipo");
+            registro.setTipo(tipo);
+
+            fabricante = rs.getString("fabricante");
+            registro.setFabricante(fabricante);
+
+            fecha_compra = rs.getString("fecha_compra");
+            registro.setFecha_compra(fecha_compra);
+
+            ultimo_mantenimiento = rs.getString("ultimo_mantenimiento");
+            registro.setUltimo_mantenimiento(ultimo_mantenimiento);
+
+            estado = rs.getString("estado");
+            registro.setEstado(estado);
+
+            ultimo_mantenimiento = rs.getString("prestado");
+            registro.setPrestado(prestado);
+
+            calificacion = rs.getInt("calificacion");
+            registro.setUltimo_mantenimiento(ultimo_mantenimiento);
+            
+            st.close();
+        }    
+    catch (SQLException e) {
+            System.out.println("Problemas al obtener la lista de Activos");
+        e.printStackTrace();
+    }
+
+    return registro;
+
+}
+
 }
