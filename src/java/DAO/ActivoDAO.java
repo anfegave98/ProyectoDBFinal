@@ -51,7 +51,7 @@ public class ActivoDAO {
         return result;
     }
     
-    public boolean deleteSupervisor(int a) throws SQLException {
+    public boolean deleteActivo(int a) throws SQLException {
         boolean result = false;
         Connection connection = DbUtil.getConnection();
         String query = "delete from activo  where id_activo= ?";
@@ -67,8 +67,8 @@ public class ActivoDAO {
         return result;
     }
     
-     public List<Activo> getAllActivo() throws SQLException {
-        List<Activo> activo = null;
+     public ArrayList<Activo> getAllActivo() throws SQLException {
+        ArrayList<Activo> activo = null;
         boolean result = false;
         String query = "SELECT * FROM activo";
         Connection connection = DbUtil.getConnection();

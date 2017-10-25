@@ -5,7 +5,7 @@
  */
 package Controller;
 
-import Dao.ActivoDAO;
+import DAO.ActivoDAO;
 import Model.Activo;
 import java.io.IOException;
 import java.io.PrintWriter;
