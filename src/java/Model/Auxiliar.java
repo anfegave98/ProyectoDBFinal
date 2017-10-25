@@ -11,12 +11,12 @@ package Model;
  */
 public class Auxiliar extends Trabajador {
     private String turno;
-    private Supervisor supervisor;
+    private int id_supervisor;
 
-    public Auxiliar(int id, String nombre, String apellido, String fechaEntrada, String turno, Supervisor supervisor) {
+    public Auxiliar(int id, String nombre, String apellido, String fechaEntrada, String turno, int id_supervisor) {
         super(id, nombre, apellido, fechaEntrada);
         this.turno=turno;
-        this.supervisor=supervisor;
+        this.id_supervisor=id_supervisor;
     }
 
     public String getTurno() {
@@ -27,13 +27,15 @@ public class Auxiliar extends Trabajador {
         this.turno = turno;
     }
 
-    public Supervisor getSupervisor() {
-        return supervisor;
+    public int getId_supervisor() {
+        return id_supervisor;
     }
 
-    public void setSupervisor(Supervisor supervisor) {
-        this.supervisor = supervisor;
+    public void setId_supervisor(int id_supervisor) {
+        this.id_supervisor = id_supervisor;
     }
+
+  
 
  
 

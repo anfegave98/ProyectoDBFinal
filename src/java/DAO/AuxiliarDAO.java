@@ -33,7 +33,7 @@ public class AuxiliarDAO {
         boolean result = false;
         Connection connection = DbUtil.getConnection();
         String query = "insert into auxiliar (auxiliar.id_auxiliar,auxiliar.nombre_auxiliar,auxiliar.apellido,auxiliar.fecha_entrada,auxiliar.turno,auxiliar.id_supervisor) values (?,?,?,?,?,?);";
-        Supervisor supervisor = auxiliar.getSupervisor();
+        
         PreparedStatement preparedStmt = null;
         try {
             
@@ -43,7 +43,7 @@ public class AuxiliarDAO {
             preparedStmt.setString(3, auxiliar.getApellido());
             preparedStmt.setString(4, auxiliar.getFechaEntrada());
             preparedStmt.setString(5, auxiliar.getTurno());
-            preparedStmt.setInt(6, auxiliar.getSupervisor().getId());
+            preparedStmt.setInt(6, auxiliar.getId_supervisor());
             result = preparedStmt.execute();
         } catch (SQLException e) {
             e.printStackTrace();
@@ -82,13 +82,12 @@ public class AuxiliarDAO {
          String apellido = null;
          String fechaEntrada = null;
          String turno = null;
-         int supervisorID = 0;
-         Supervisor supervisor = null;
+         int id_supervisor = 0;
             while (rs.next()) {
                 if (auxiliar == null) {
                     auxiliar = new ArrayList<Auxiliar>();
                 }
-                Auxiliar registro = new Auxiliar(id, nombre, apellido, fechaEntrada, turno, supervisor);
+                Auxiliar registro = new Auxiliar(id, nombre, apellido, fechaEntrada, turno, id_supervisor);
                 id = rs.getInt("id_auxiliar");
                 registro.setId(id);
 
@@ -104,18 +103,14 @@ public class AuxiliarDAO {
                 turno = rs.getString("turno");
                 registro.setApellido(apellido);
                
-                supervisorID =  rs.getInt("id_supervisor");
-                SupervisorDAO dao = new SupervisorDAO();
+                id_supervisor =  rs.getInt("id_supervisor");
                 
-                supervisor = dao.getSupervisorId(supervisorID);
-                registro.setSupervisor(supervisor);
-
                 auxiliar.add(registro);
 
             }
             if (auxiliar != null) {
                 for (int i = 0; i < auxiliar.size(); i++) {
-                    System.out.println(auxiliar.get(i).getId() + " " + auxiliar.get(i).getNombre() + " " + auxiliar.get(i).getApellido()+ " " + auxiliar.get(i).getFechaEntrada()+ " " + auxiliar.get(i).getSupervisor().getNombre());
+                    System.out.println(auxiliar.get(i).getId() + " " + auxiliar.get(i).getNombre() + " " + auxiliar.get(i).getApellido()+ " " + auxiliar.get(i).getFechaEntrada()+ " " + auxiliar.get(i).getId_supervisor());
                 }
             }
             st.close();
