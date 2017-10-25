@@ -5,11 +5,8 @@
  */
 package DAO;
 
-import Model.Activo;
 import Model.Prestamo;
-import Model.Solicitante;
 import Util.DbUtil;
-import java.sql.Array;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -36,15 +33,19 @@ public class PrestamoDAO {
         String query = "insert into prestamo (prestamo.id_prestamo,prestamo.id_solicitante,prestamo.id_trabajador,prestamo.activo,prestamo.tipo,prestamo.fecha_entrada,prestamo.fecha_salida) values (?,?,?,?,?,?,?);";
         PreparedStatement preparedStmt = null;
         try {
-            preparedStmt = connection.prepareStatement(query);
-            preparedStmt.setInt(1, prestamo.getId_prestamo());
-            preparedStmt.setInt(2, prestamo.getId_solicitante());
-            preparedStmt.setInt(3, prestamo.getId_trabajador());
-            preparedStmt.setArray(4, (Array) prestamo.getActivo()); //OJO
-            preparedStmt.setString(5, prestamo.getTipo());
-            preparedStmt.setString(6, prestamo.getFechaEntrada());
-            preparedStmt.setString(7, prestamo.getFechaSalida());
-            result = preparedStmt.execute();
+            ArrayList<Integer> activos = prestamo.getActivo();
+            for(int i=0;i<activos.size();i++){
+                preparedStmt = connection.prepareStatement(query);
+                preparedStmt.setInt(1, prestamo.getId_prestamo());
+                preparedStmt.setInt(2, prestamo.getId_solicitante());
+                preparedStmt.setInt(3, prestamo.getId_trabajador());
+                preparedStmt.setInt(4, activos.get(i)); //OJO
+                preparedStmt.setString(5, prestamo.getTipo());
+                preparedStmt.setString(6, prestamo.getFechaEntrada());
+                preparedStmt.setString(7, prestamo.getFechaSalida());
+                result = preparedStmt.execute();
+            }
+           
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -70,7 +71,7 @@ public class PrestamoDAO {
      public List<Prestamo> getAllPrestamo() throws SQLException {
         List<Prestamo> prestamo = null;
         boolean result = false;
-        String query = "SELECT * FROM aprestamo";
+        String query = "SELECT * FROM prestamo";
         Connection connection = DbUtil.getConnection();
         try {
 
@@ -98,7 +99,7 @@ public class PrestamoDAO {
                 id_trabajador = rs.getInt("id_trabajador");
                 registro.setId_prestamo(id_trabajador);
                 
-                String queryActivo = "SELECT activo FROM prestamo where id_prestamo = "+ id_prestamo;
+                String queryActivo = "SELECT id_activo FROM prestamo where id_prestamo = "+ id_prestamo;
                 ResultSet rsActivo = st.executeQuery(queryActivo);
                 
                 while(rsActivo.next()){
