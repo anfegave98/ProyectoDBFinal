@@ -1,3 +1,6 @@
+<%@page import="Model.Activo"%>
+<%@page import="Model.Trabajador"%>
+<%@page import="java.util.ArrayList"%>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -57,7 +60,7 @@
                     <ul class="nav navbar-nav">
                         <li><a href="index.jsp">Inicio</a></li>
                         <li><a href="Prestamos.jsp">Prestamos</a></li>
-                        <li class="active"><a href="Activos.jsp">Activos</a></li>
+                        <li class="active"><a href="Activoo">Activos</a></li>
                         <li><a href="Solicitantes.jsp">Solicitante</a></li>
                         <li><a href="Auxiliar.jsp">Auxiliar</a></li>
                         <li><a href="Supervisor.jsp">Supervisor</a></li>
@@ -77,10 +80,22 @@
                     <p></p>
                     <hr>
                     <div class="container">   
-                        <form class="form-inline">
+                        <form class="form-inline" action="EliminarActivo" method="POST">
                             <div class="form-group">
-                                <label for="idequipo">ID Activo:</label>
-                                <input  class="form-control" id="idequipo">
+                                <label for="tipo">Id Activo:</label>
+                                <select class="form-control" name="eliminarActivo">
+                             <% 
+                                 if (request.getAttribute("activos") != null) { 
+                                    ArrayList<Activo> array = (ArrayList<Activo>) request.getAttribute("activos"); 
+                                     for (Activo a : array) {      
+                             %> 
+                             <option value="<%=a.getId_activo()%>"><%=a.getId_activo()%></option> 
+                             <%      } 
+                                 } 
+                             %> 
+                         </select>   
+                         <br> 
+
                             </div>
 
                             <br>

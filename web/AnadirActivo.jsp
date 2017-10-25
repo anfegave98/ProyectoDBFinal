@@ -57,7 +57,7 @@
                     <ul class="nav navbar-nav">
                         <li><a href="index.jsp">Inicio</a></li>
                         <li><a href="Prestamos.jsp">Prestamos</a></li>
-                        <li class="active"><a href="Activos.jsp">Activos</a></li>
+                        <li class="active"><a href="Activoo">Activos</a></li>
                         <li><a href="Solicitantes.jsp">Solicitante</a></li>
                         <li><a href="Auxiliar.jsp">Auxiliar</a></li>
                         <li><a href="Supervisor.jsp">Supervisor</a></li>
@@ -77,7 +77,7 @@
                     <p></p>
                     <hr>
                     <div class="container">   
-                        <form class="form-inline" action="AñadirActivos" method="POST">
+                        <form class="form-inline" action="Activoo" method="POST">
                             <div class="form-group">
                                 <label for="idequipo">ID Activo:</label>
                                 <input  class="form-control" name="idActivo">
@@ -102,8 +102,10 @@
                             <div class="form-group">
                                 <label for="tipo">Estado</label>
                                 <select class="form-control" name="estado">
-                                    <option>True</option>
-                                    <option>False</option>
+                                    <option>Excelente</option>
+                                    <option>Bueno</option>
+                                    <option>Regula</option>
+                                    <option>Malo</option>
                                 </select>
                             </div>
                             <div class="form-group">

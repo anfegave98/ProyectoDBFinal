@@ -59,7 +59,7 @@
                     <ul class="nav navbar-nav">
                         <li><a href="index.jsp">Inicio</a></li>
                         <li><a href="Prestamos.jsp">Prestamos</a></li>
-                        <li class="active"><a href="Activos.jsp">Activos</a></li>
+                        <li class="active"><a href="Activoo">Activos</a></li>
                         <li><a href="Solicitantes.jsp">Solicitante</a></li>
                         <li><a href="Auxiliar.jsp">Auxiliar</a></li>
                         <li><a href="Supervisor.jsp">Supervisor</a></li>
@@ -76,12 +76,12 @@
                 <div class="col-sm-8 text-left"> 
                     <h1>Activos</h1>
                     <div class="span12">&nbsp;</div>
-                    <button onclick="window.location.href = 'AñadirActivo.jsp'" type="button" type="button" class="btn-sm btn-success">Añadir Activo</button>
-                    <button onclick="window.location.href = 'EliminarActivo.jsp'" type="button" type="button" class="btn-sm btn-danger">Eliminar Activo</button>
+                    <button onclick="window.location.href = 'AnadirActivo.jsp'" type="button" type="button" class="btn-sm btn-success">Añadir Activo</button>
+                    <button onclick="window.location.href = 'EliminarActivo?action=delete'" type="button" type="button" class="btn-sm btn-danger">Eliminar Activo</button>
                     <button onclick="window.location.href = 'BuscarActivo.jsp'" type="button" type="button" class="btn-sm btn-warning">Buscar Activo</button>
                     <div class="span12">&nbsp;</div>
 
-                    <form action="AñadirActivo" method="POST"></form>
+                 
            
                     <div class="container">           
                         <table class="table table-striped">

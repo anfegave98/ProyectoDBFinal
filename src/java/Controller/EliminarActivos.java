@@ -5,7 +5,7 @@
  */
 package Controller;
 
-import DAO.ActivoDAO;
+import Dao.ActivoDAO;
 import Model.Activo;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -13,6 +13,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -22,7 +23,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author anfeg
  */
-public class AñadirActivos extends HttpServlet {
+public class EliminarActivos extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -41,10 +42,10 @@ public class AñadirActivos extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet AñadirActivos</title>");            
+            out.println("<title>Servlet EliminarActivo</title>");            
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet AñadirActivos at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet EliminarActivo at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -62,51 +63,50 @@ public class AñadirActivos extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-         try {
-            ActivoDAO obj = new ActivoDAO();
-            
-            ArrayList<Activo> lista = (ArrayList<Activo>) obj.getAllActivo();
-            
-            request.setAttribute("listaActivos", lista);
-            
-           request.getRequestDispatcher("AñadirActivo.jsp").forward(request, response);
+        ArrayList<Activo> activos=new ArrayList<>();
+        try {
+            ActivoDAO a=new ActivoDAO();
+            activos=a.getAllActivo();
+            request.setAttribute("activos", activos);
+            RequestDispatcher rd = getServletContext().getRequestDispatcher("/EliminarActivo.jsp"); 
+             rd.forward(request, response); 
 
         } catch (SQLException ex) {
-            Logger.getLogger(AñadirActivos.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(EliminarActivos.class.getName()).log(Level.SEVERE, null, ex);
         }
-
+        
     }
+
+    /**
+     * Handles the HTTP <code>POST</code> method.
+     *
+     * @param request servlet request
+     * @param response servlet response
+     * @throws ServletException if a servlet-specific error occurs
+     * @throws IOException if an I/O error occurs
+     */
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-       try {
-           int id_activo =Integer.parseInt(request.getParameter("idActivo"));
-           String tipo = (String)request.getParameter("tipo");
-           String fabricante = (String)request.getParameter("fabricante");
-           String fecha_compra = (String)request.getParameter("fechaC");
-           String mantenimiento = (String)request.getParameter("mantenimiento");
-           String estado = (String)request.getParameter("estado");
-           String prestado = (String)request.getParameter("prestado");
-           int calificacion =Integer.parseInt(request.getParameter("calificacion"));
-
-
-            ActivoDAO dao = new ActivoDAO();
-            Activo tab = new Activo(id_activo, tipo, fabricante, fecha_compra, mantenimiento, estado, prestado, calificacion);
-            
-            dao.addActivo(tab);
-           
-            
-            response.sendRedirect("AñadirActivos");
-            
+        int idA=Integer.parseInt(request.getParameter("eliminarActivo"));
+        try {
+            ActivoDAO a=new ActivoDAO();
+            a.deleteActivo(idA);
         } catch (SQLException ex) {
-            Logger.getLogger(AñadirActivos.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(EliminarActivos.class.getName()).log(Level.SEVERE, null, ex);
         }
+    
+        response.sendRedirect("Activoo");
     }
 
+    /**
+     * Returns a short description of the servlet.
+     *
+     * @return a String containing servlet description
+     */
     @Override
     public String getServletInfo() {
         return "Short description";
     }// </editor-fold>
-
 
 }
