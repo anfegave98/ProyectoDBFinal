@@ -79,7 +79,7 @@
                     <div class="container">   
                         <form class="form-inline">
 
-                            <div class="form-group">
+                            <div class="form-group" action="BuscarActivo" method="POST">
                                 <label for="idequipo">ID Activo:</label>
                                 <input  class="form-control" id="idequipo">
                             </div>
