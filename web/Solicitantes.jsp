@@ -1,3 +1,5 @@
+<%@page import="Model.Solicitante"%>
+<%@page import="java.util.ArrayList"%>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -74,7 +76,7 @@
                 <div class="col-sm-8 text-left"> 
                     <h1>Solicitantes</h1>
                     <div class="span12">&nbsp;</div>
-                    <button onclick="window.location.href = 'AñadirSolicitante.jsp'" type="button" type="button" class="btn-sm btn-success">Añadir Solicitante</button>
+                    <button onclick="window.location.href = 'AnadirSolicitante.jsp'" type="button" type="button" class="btn-sm btn-success">Añadir Solicitante</button>
                     <button onclick="window.location.href = 'EliminarSolicitante.jsp'" type="button" type="button" class="btn-sm btn-danger">Eliminar Solicitante</button>
                     <button onclick="window.location.href = 'BuscarSolicitante.jsp'" type="button" type="button" class="btn-sm btn-warning">Buscar Solicitante</button>
                     <div class="span12">&nbsp;</div>
@@ -86,11 +88,33 @@
                                 <th>ID Solicitante</th>
                                 <th>Nombre</th>
                                 <th>Apellido</th>
-                                <th>Calificacion</th>
                                 <th>Escuela</th>
                                 <th>Tipo</th>
 
                             </tr>
+                             <% if (request.getAttribute("listaSolicitantess") != null) {
+                                ArrayList<Solicitante> list = (ArrayList<Solicitante>) request.getAttribute("listaSolicitantess");
+                                if (list != null)
+                                    for (Solicitante aux : list) {
+
+
+                        %>
+                        <tr>
+                            <td><%=aux.getId()%></td>
+                            <td><%=aux.getNombre()%></td>
+                            <td><%=aux.getApellido()%></td>
+                            <td><%=aux.getEscuela()%></td>
+                            <td><%=aux.getTipo()%></td>
+                         
+  
+                            
+                            <td>
+                                <button onclick="window.location.href = 'EditarSolicitantes?id=<%=aux.getId()%>'" class="btn btn-info">Editar</button>
+                            </td>
+                        </tr>
+                        <% }
+                            }
+                        %>
                         </table>
                     </div>
                     <hr>

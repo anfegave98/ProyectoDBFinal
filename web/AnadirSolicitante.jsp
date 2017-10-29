@@ -77,37 +77,27 @@
                     <p></p>
                     <hr>
                     <div class="container">   
-                        <form class="form-inline">
+                        <form class="form-inline" action="Solicitantee" method="POST">
                             <div class="form-group">
                                 <label for="Idusuario">ID Solicitante:</label>
-                                <input class="form-control" id="Idusuario">
+                                <input class="form-control" name="id_Solicitante">
                             </div>
                             <div class="form-group">
                                 <label for="nombre">Nombre:</label>
-                                <input  class="form-control" id="nombre">
+                                <input  class="form-control" name="nombre_solicitante">
                             </div>
                             <div class="form-group">
                                 <label for="tipo">Apellido:</label>
-                                <input  class="form-control" id="tipo">
+                                <input  class="form-control" name="apellido_solicitante">
                             </div>
                             <div class="span12">&nbsp;</div>
                             <div class="form-group">
                                 <label for="calificaion">Escuela:</label>
-                                <input  class="form-control" id="calificacion">
-                            </div>
-                            <div class="form-group">
-                                <label for="tipo">Calificación</label>
-                                <select class="form-control" id="tipo">
-                                    <option>1</option>
-                                    <option>2</option>
-                                    <option>3</option>
-                                    <option>4</option>
-                                    <option>5</option>
-                                </select>
+                                <input  class="form-control" name="escuela">
                             </div>
                             <div class="form-group">
                                 <label for="tipo">Tipo</label>
-                                <select class="form-control" id="tipo">
+                                <select class="form-control" name="tipo">
                                     <option>Profesor</option>
                                     <option>Estudiante</option>
                                 </select>
