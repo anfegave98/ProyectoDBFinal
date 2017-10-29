@@ -170,7 +170,7 @@ public class ActivoDAO {
             estado = rs.getString("estado");
             registro.setEstado(estado);
 
-            ultimo_mantenimiento = rs.getString("prestado");
+            prestado = rs.getString("prestado");
             registro.setPrestado(prestado);
 
             calificacion = rs.getInt("calificacion");
