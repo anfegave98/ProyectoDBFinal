@@ -5,8 +5,15 @@
  */
 package Controller;
 
+import DAO.SupervisorDAO;
+import Model.Supervisor;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -57,6 +64,20 @@ public class EliminarSupervisores extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
+        
+          ArrayList<Supervisor> supervisores =new ArrayList<>();
+        try {
+            SupervisorDAO a = new SupervisorDAO();
+            supervisores = (ArrayList<Supervisor>) a.getAllSupervisor();
+            request.setAttribute("supervisores", supervisores);
+            RequestDispatcher rd = getServletContext().getRequestDispatcher("/EliminarSupervisor.jsp"); 
+             rd.forward(request, response); 
+
+        } catch (SQLException ex) {
+            Logger.getLogger(EliminarSupervisores.class.getName()).log(Level.SEVERE, null, ex);
+        } 
+        
+        
     }
 
     /**
@@ -71,6 +92,17 @@ public class EliminarSupervisores extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
+        
+        int idA=Integer.parseInt(request.getParameter("eliminarSupervisor"));
+        try {
+            SupervisorDAO a = new SupervisorDAO();
+            a.deleteSupervidor(idA);
+        } catch (SQLException ex) {
+            Logger.getLogger(EliminarSupervisores.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    
+        response.sendRedirect("Supervisorr");
+        
     }
 
     /**

@@ -5,8 +5,15 @@
  */
 package Controller;
 
+import DAO.SupervisorDAO;
+import Model.Activo;
+import Model.Supervisor;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -57,6 +64,21 @@ public class BuscarSupervisores extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
+        
+         try {
+            SupervisorDAO obj = new SupervisorDAO();
+             int id=Integer.parseInt(request.getParameter("idSupervisor"));
+            ArrayList<Supervisor> lista = (ArrayList<Supervisor>)obj.getSupervisorID(id);
+            
+            request.setAttribute("listaSupervisoresBusqueda", lista);
+            
+           request.getRequestDispatcher("BuscarSupervisor.jsp").forward(request, response);
+
+        } catch (SQLException ex) {
+            Logger.getLogger(BuscarSupervisores.class.getName()).log(Level.SEVERE, null, ex);
+        } 
+        
+        
     }
 
     /**
