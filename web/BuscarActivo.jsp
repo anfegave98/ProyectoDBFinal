@@ -1,3 +1,5 @@
+<%@page import="Model.Activo"%>
+<%@page import="java.util.ArrayList"%>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -77,11 +79,11 @@
                     <p></p>
                     <hr>
                     <div class="container">   
-                        <form class="form-inline">
+                        <form class="form-inline" action="BuscarActivos" method="GET">
 
-                            <div class="form-group" action="BuscarActivo" method="POST">
+                            <div class="form-group">
                                 <label for="idequipo">ID Activo:</label>
-                                <input  class="form-control" id="idequipo">
+                                <input  class="form-control" name="idActivo">
                             </div>
 
                             <br>
@@ -102,6 +104,29 @@
                                 <th>Prestado</th>
                                 <th>Calificacion</th>
                             </tr>
+                            <% if (request.getAttribute("listaActivosBusqueda") != null) {
+                                ArrayList<Activo> list = (ArrayList<Activo>) request.getAttribute("listaActivosBusqueda");
+                                if (list != null)
+                                    for (Activo activo : list) {
+
+
+                        %>
+                        <tr>
+                            <td><%=activo.getId_activo()%></td>
+                            <td><%=activo.getTipo()%></td>
+                            <td><%=activo.getFabricante()%></td>
+                            <td><%=activo.getFecha_compra()%></td>
+                            <td><%=activo.getUltimo_mantenimiento()%></td>
+                            <td><%=activo.getEstado()%></td>
+                            <td><%=activo.getPrestado()%></td>
+                            <td><%=activo.getCalificacion()%></td>
+                            
+                            <td>
+                            </td>
+                        </tr>
+                        <% }
+                            }
+                        %>
                         </table>
                     </div>
                 </div>

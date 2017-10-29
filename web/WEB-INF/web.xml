@@ -8,6 +8,10 @@
         <servlet-name>EliminarActivo</servlet-name>
         <servlet-class>Controller.EliminarActivos</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>BuscarActivos</servlet-name>
+        <servlet-class>Controller.BuscarActivos</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Activoo</servlet-name>
         <url-pattern>/Activoo</url-pattern>
@@ -15,6 +19,10 @@
     <servlet-mapping>
         <servlet-name>EliminarActivo</servlet-name>
         <url-pattern>/EliminarActivo</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>BuscarActivos</servlet-name>
+        <url-pattern>/BuscarActivos</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
