@@ -77,7 +77,7 @@
                     <p></p>
                     <hr>
                     <div class="container">   
-                        <form class="form-inline">
+                        <form class="form-inline" action="Auxiliarr" action="POST">
                             <div class="form-group">
                                 <label for="idequipo">ID Auxiliar:</label>
                                 <input  class="form-control" name="idAuxiliar">
@@ -99,10 +99,14 @@
                                 <label for="prestaso">Turno:</label>
                                 <input  class="form-control" name="turno">
                             </div>
+                            <div class="form-group">
+                                <label for="prestaso">ID Supervisor:</label>
+                                <input  class="form-control" name="idSupervisor">
+                            </div>
 
                             <br>
                             <div class="span12">&nbsp;</div>
-                            <button type="submit" class="btn btn-default">Enviar</button>
+                            <button type="submit" class="btn btn-default" name="Enivar">Enviar</button>
                         </form>
                     </div>
                 </div>

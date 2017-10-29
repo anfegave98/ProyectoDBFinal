@@ -113,7 +113,7 @@
                             <td><%=activo.getCalificacion()%></td>
                             
                             <td>
-                                <button onclick="window.location.href = 'EditarTablas?id=<%=activo.getId_activo()%>'" class="btn btn-info">Editar</button>
+                                <button onclick="window.location.href = 'EditarActivos?id=<%=activo.getId_activo()%>'" class="btn btn-info">Editar</button>
                             </td>
                         </tr>
                         <% }

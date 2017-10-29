@@ -1,3 +1,5 @@
+<%@page import="Model.Auxiliar"%>
+<%@page import="java.util.ArrayList"%>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -74,7 +76,7 @@
                 <div class="col-sm-8 text-left"> 
                     <h1>Auxiliar</h1>
                     <div class="span12">&nbsp;</div>
-                    <button onclick="window.location.href = 'AñadirAuxiliar.jsp'" type="button" type="button" class="btn-sm btn-success">Añadir Auxiliar</button>
+                    <button onclick="window.location.href = 'AnadirAuxiliar.jsp'" type="button" type="button" class="btn-sm btn-success">Añadir Auxiliar</button>
                     <button onclick="window.location.href = 'EliminarAuxiliar.jsp'" type="button" type="button" class="btn-sm btn-danger">Eliminar Auxiliar</button>
                     <button onclick="window.location.href = 'BuscarAuxiliar.jsp'" type="button" type="button" class="btn-sm btn-warning">Buscar Auxiliar</button>
                     <div class="span12">&nbsp;</div>
@@ -90,6 +92,29 @@
                                 <th>Turno</th>
                                 <th>ID Supervisor</th>
                             </tr>
+                            <% if (request.getAttribute("listaAuxiliares") != null) {
+                                ArrayList<Auxiliar> list = (ArrayList<Auxiliar>) request.getAttribute("listaAuxiliares");
+                                if (list != null)
+                                    for (Auxiliar aux : list) {
+
+
+                        %>
+                        <tr>
+                            <td><%=aux.getId()%></td>
+                            <td><%=aux.getNombre()%></td>
+                            <td><%=aux.getApellido()%></td>
+                            <td><%=aux.getFechaEntrada()%></td>
+                            <td><%=aux.getTurno()%></td>
+                            <td><%=aux.getId_supervisor()%></td>
+  
+                            
+                            <td>
+                                <button onclick="window.location.href = 'EditarAuxiliares?id=<%=aux.getId()%>'" class="btn btn-info">Editar</button>
+                            </td>
+                        </tr>
+                        <% }
+                            }
+                        %>
                         </table>
                     </div>
                     <hr>

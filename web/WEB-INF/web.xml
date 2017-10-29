@@ -48,6 +48,22 @@
         <servlet-name>EliminarSupervisores</servlet-name>
         <servlet-class>Controller.EliminarSupervisores</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>EditarAuxiliares</servlet-name>
+        <servlet-class>Controller.EditarAuxiliares</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>EditarActivos</servlet-name>
+        <servlet-class>Controller.EditarActivos</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>EditarSupervisores</servlet-name>
+        <servlet-class>Controller.EditarSupervisores</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>EditarSolicitantes</servlet-name>
+        <servlet-class>Controller.EditarSolicitantes</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Activoo</servlet-name>
         <url-pattern>/Activoo</url-pattern>
@@ -95,6 +111,22 @@
     <servlet-mapping>
         <servlet-name>EliminarSupervisores</servlet-name>
         <url-pattern>/EliminarSupervisores</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>EditarAuxiliares</servlet-name>
+        <url-pattern>/EditarAuxiliares</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>EditarActivos</servlet-name>
+        <url-pattern>/EditarActivos</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>EditarSupervisores</servlet-name>
+        <url-pattern>/EditarSupervisores</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>EditarSolicitantes</servlet-name>
+        <url-pattern>/EditarSolicitantes</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
