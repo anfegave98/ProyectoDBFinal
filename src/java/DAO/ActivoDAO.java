@@ -112,7 +112,7 @@ public class ActivoDAO {
                 registro.setPrestado(prestado);
 
                 calificacion = rs.getInt("calificacion");
-                registro.setUltimo_mantenimiento(ultimo_mantenimiento);
+                registro.setCalificacion(calificacion);
 
                 activo.add(registro);
 
