@@ -5,8 +5,14 @@
  */
 package Controller;
 
+import DAO.SolicitanteDAO;
+import Model.Solicitante;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -57,6 +63,20 @@ public class BuscarSolicitantes extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
+        
+        try {
+            SolicitanteDAO obj = new SolicitanteDAO();
+             int id=Integer.parseInt(request.getParameter("idSolicitante"));
+            ArrayList<Solicitante> lista = (ArrayList<Solicitante>)obj.getSolicitanteID(id);
+            
+            request.setAttribute("listaSolicitanteBusqueda", lista);
+            
+           request.getRequestDispatcher("BuscarSolicitante.jsp").forward(request, response);
+
+        } catch (SQLException ex) {
+            Logger.getLogger(BuscarSolicitantes.class.getName()).log(Level.SEVERE, null, ex);
+        } 
+        
     }
 
     /**
