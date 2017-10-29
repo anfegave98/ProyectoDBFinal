@@ -30,9 +30,6 @@ public class Activo {
         this.calificacion = calificacion;
     }
 
-    public Activo() {
-    }
-
     
     public int getId_activo() {
         return id_activo;

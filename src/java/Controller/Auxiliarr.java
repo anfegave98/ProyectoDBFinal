@@ -5,8 +5,16 @@
  */
 package Controller;
 
+import DAO.ActivoDAO;
+import DAO.AuxiliarDAO;
+import Model.Activo;
+import Model.Auxiliar;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -56,31 +64,50 @@ public class Auxiliarr extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
-    }
+         try {
+            ActivoDAO obj = new ActivoDAO();
+            
+            ArrayList<Activo> lista = (ArrayList<Activo>) obj.getAllActivo();
+            
+            request.setAttribute("listaActivos", lista);
+            
+           request.getRequestDispatcher("Activos.jsp").forward(request, response);
 
-    /**
-     * Handles the HTTP <code>POST</code> method.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
+        } catch (SQLException ex) {
+            Logger.getLogger(Activoo.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+    }
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+       try {
+           int id_auxiliar =Integer.parseInt(request.getParameter("idAuxilair"));
+           String nombre = (String)request.getParameter("nombre");
+           String apellido = (String)request.getParameter("apellido");
+           String fecha_entrada = (String)request.getParameter("fechaE");
+           String turno = (String)request.getParameter("turno");
+           int id_supervisor = Integer.parseInt(request.getParameter("idSupervisor"));
+          
+
+
+            AuxiliarDAO dao = new AuxiliarDAO();
+            Auxiliar tab = new Auxiliar(id_auxiliar, nombre, apellido, fecha_entrada, turno, id_supervisor);
+            
+            dao.addAuxiliar(tab);
+           
+            
+            response.sendRedirect("Auxiiarr");
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(Activoo.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
-    /**
-     * Returns a short description of the servlet.
-     *
-     * @return a String containing servlet description
-     */
     @Override
     public String getServletInfo() {
         return "Short description";
     }// </editor-fold>
+
 
 }

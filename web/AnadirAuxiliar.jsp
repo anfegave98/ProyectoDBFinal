@@ -58,9 +58,9 @@
                         <li><a href="index.jsp">Inicio</a></li>
                         <li><a href="Prestamos.jsp">Prestamos</a></li>
                         <li><a href="Activoo">Activos</a></li>
-                        <li><a href="Solicitantes.jsp">Solicitante</a></li>
-                        <li class="active"><a href="Auxiliar.jsp">Auxiliar</a></li>
-                        <li><a href="Supervisor.jsp">Supervisor</a></li>
+                        <li><a href="Solicitantee">Solicitante</a></li>
+                        <li><a href="Auxiliarr">Auxiliar</a></li>
+                        <li><a href="Supervisorr">Supervisor</a></li>
                     </ul>
 
                 </div>
@@ -80,24 +80,24 @@
                         <form class="form-inline">
                             <div class="form-group">
                                 <label for="idequipo">ID Auxiliar:</label>
-                                <input  class="form-control" id="idequipo">
+                                <input  class="form-control" name="idAuxiliar">
                             </div>
                             <div class="form-group">
                                 <label for="nombre">Nombre:</label>
-                                <input  class="form-control" id="nombre">
+                                <input  class="form-control" name="nombre">
                             </div>
                             <div class="form-group">
                                 <label for="calificacion">Apellido:</label>
-                                <input  class="form-control" id="calificacion">
+                                <input  class="form-control" name="apellido">
                             </div>
                             <div class="span12">&nbsp;</div>
                             <div class="form-group">
                                 <label for="fechaC">Fecha Entrada:</label>
-                                <input  class="form-control" id="fechaC">
+                                <input  class="form-control" name="fechaE">
                             </div>
                             <div class="form-group">
                                 <label for="prestaso">Turno:</label>
-                                <input  class="form-control" id="prestado">
+                                <input  class="form-control" name="turno">
                             </div>
 
                             <br>

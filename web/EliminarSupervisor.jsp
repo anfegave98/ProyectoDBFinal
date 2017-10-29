@@ -58,9 +58,9 @@
                         <li><a href="index.jsp">Inicio</a></li>
                         <li><a href="Prestamos.jsp">Prestamos</a></li>
                         <li><a href="Activoo">Activos</a></li>
-                        <li><a href="Solicitantes.jsp">Solicitante</a></li>
-                        <li><a href="Auxiliar.jsp">Auxiliar</a></li>
-                        <li class="active"><a href="Supervisor.jsp">Supervisor</a></li>
+                        <li><a href="Solicitantee">Solicitante</a></li>
+                        <li><a href="Auxiliarr">Auxiliar</a></li>
+                        <li><a href="Supervisorr">Supervisor</a></li>
                     </ul>
 
                 </div>
