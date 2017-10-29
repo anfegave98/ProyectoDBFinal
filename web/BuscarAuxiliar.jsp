@@ -1,3 +1,5 @@
+<%@page import="Model.Auxiliar"%>
+<%@page import="java.util.ArrayList"%>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -77,11 +79,11 @@
                     <p></p>
                     <hr>
                     <div class="container">   
-                        <form class="form-inline">
+                        <form class="form-inline" action="BuscarAuxiliares" method="GET">
 
                             <div class="form-group">
                                 <label for="idequipo">ID Auxiliar:</label>
-                                <input  class="form-control" id="idequipo">
+                                <input  class="form-control" name="idAuxiliar">
                             </div>
 
                             <br>
@@ -98,7 +100,28 @@
                                 <th>Apellido</th>
                                 <th>Fecha Entrado</th>
                                 <th>Turno</th>
+                                <th>ID Supervisor</th>
                             </tr>
+                            <% if (request.getAttribute("listaAuxiliarBusqueda") != null) {
+                                ArrayList<Auxiliar> list = (ArrayList<Auxiliar>) request.getAttribute("listaAuxiliarBusqueda");
+                                if (list != null)
+                                    for (Auxiliar aux : list) {
+
+
+                        %>
+                        <tr>
+                           <td><%=aux.getId()%></td>
+                            <td><%=aux.getNombre()%></td>
+                            <td><%=aux.getApellido()%></td>
+                            <td><%=aux.getFechaEntrada()%></td>
+                            <td><%=aux.getTurno()%></td>
+                            <td><%=aux.getId_supervisor()%></td>
+                            <td>
+                            </td>
+                        </tr>
+                        <% }
+                            }
+                        %>
                         </table>
                     </div>
                 </div>

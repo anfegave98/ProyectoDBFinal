@@ -77,7 +77,7 @@
                     <p></p>
                     <hr>
                     <div class="container">   
-                        <form class="form-inline" action="Auxiliarr" action="POST">
+                        <form class="form-inline" action="Auxiliarr" method="POST">
                             <div class="form-group">
                                 <label for="idequipo">ID Auxiliar:</label>
                                 <input  class="form-control" name="idAuxiliar">

@@ -5,8 +5,17 @@
  */
 package Controller;
 
+import DAO.ActivoDAO;
+import DAO.AuxiliarDAO;
+import Model.Activo;
+import Model.Auxiliar;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -53,10 +62,21 @@ public class EliminarAuxiliares extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
-    @Override
+   @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        ArrayList<Auxiliar> auxiliares=new ArrayList<>();
+        try {
+            AuxiliarDAO a=new AuxiliarDAO();
+            auxiliares=a.getAllAuxiliar();
+            request.setAttribute("auxiliares", auxiliares);
+            RequestDispatcher rd = getServletContext().getRequestDispatcher("/EliminarAuxiliar.jsp"); 
+             rd.forward(request, response); 
+
+        } catch (SQLException ex) {
+            Logger.getLogger(EliminarAuxiliares.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
     }
 
     /**
@@ -70,7 +90,15 @@ public class EliminarAuxiliares extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        int idA=Integer.parseInt(request.getParameter("eliminarAuxiliar"));
+        try {
+            AuxiliarDAO a=new AuxiliarDAO();
+            a.deleteAuxiliar(idA);
+        } catch (SQLException ex) {
+            Logger.getLogger(EliminarAuxiliares.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    
+        response.sendRedirect("Auxiliarr");
     }
 
     /**

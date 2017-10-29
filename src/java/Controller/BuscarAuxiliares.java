@@ -5,8 +5,16 @@
  */
 package Controller;
 
+import DAO.ActivoDAO;
+import DAO.AuxiliarDAO;
+import Model.Activo;
+import Model.Auxiliar;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -53,10 +61,21 @@ public class BuscarAuxiliares extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
-    @Override
+     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+         try {
+            AuxiliarDAO obj = new AuxiliarDAO();
+             int id=Integer.parseInt(request.getParameter("idAuxiliar"));
+            ArrayList<Auxiliar> lista = (ArrayList<Auxiliar>)obj.getAuxiliarID(id);
+            
+            request.setAttribute("listaAuxiliarBusqueda", lista);
+            
+           request.getRequestDispatcher("BuscarAuxiliar.jsp").forward(request, response);
+
+        } catch (SQLException ex) {
+            Logger.getLogger(BuscarActivos.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**
@@ -82,5 +101,6 @@ public class BuscarAuxiliares extends HttpServlet {
     public String getServletInfo() {
         return "Short description";
     }// </editor-fold>
+
 
 }

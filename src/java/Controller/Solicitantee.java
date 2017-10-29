@@ -74,7 +74,7 @@ public class Solicitantee extends HttpServlet {
            request.getRequestDispatcher("Solicitantes.jsp").forward(request, response);
 
         } catch (SQLException ex) {
-            Logger.getLogger(Activoo.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Solicitantee.class.getName()).log(Level.SEVERE, null, ex);
         }
 
     }
@@ -98,7 +98,7 @@ public class Solicitantee extends HttpServlet {
             response.sendRedirect("Solicitantee");
             
         } catch (SQLException ex) {
-            Logger.getLogger(Activoo.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Solicitantee.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 

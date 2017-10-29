@@ -77,7 +77,7 @@
                     <h1>Auxiliar</h1>
                     <div class="span12">&nbsp;</div>
                     <button onclick="window.location.href = 'AnadirAuxiliar.jsp'" type="button" type="button" class="btn-sm btn-success">Añadir Auxiliar</button>
-                    <button onclick="window.location.href = 'EliminarAuxiliar.jsp'" type="button" type="button" class="btn-sm btn-danger">Eliminar Auxiliar</button>
+                    <button onclick="window.location.href = 'EliminarAuxiliares?action=delete'" type="button" type="button" class="btn-sm btn-danger">Eliminar Auxiliar</button>
                     <button onclick="window.location.href = 'BuscarAuxiliar.jsp'" type="button" type="button" class="btn-sm btn-warning">Buscar Auxiliar</button>
                     <div class="span12">&nbsp;</div>
 

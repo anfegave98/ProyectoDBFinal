@@ -1,3 +1,5 @@
+<%@page import="Model.Auxiliar"%>
+<%@page import="java.util.ArrayList"%>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -77,10 +79,21 @@
                     <p></p>
                     <hr>
                     <div class="container">   
-                        <form class="form-inline">
+                        <form class="form-inline" action="EliminarAuxiliares" method="POST">
                             <div class="form-group">
-                                <label for="idusuario">ID Auxiliar:</label>
-                                <input  class="form-control" id="idusuario">
+                                <label for="idauxiliar">ID Auxiliar:</label>
+                                <select  class="form-control" name="eliminarAuxiliar">
+                                                        <% 
+                                 if (request.getAttribute("auxiliares") != null) { 
+                                    ArrayList<Auxiliar> array = (ArrayList<Auxiliar>) request.getAttribute("auxiliares"); 
+                                     for (Auxiliar a : array) {      
+                             %> 
+                             <option value="<%=a.getId()%>"><%=a.getId()%></option> 
+                             <%      } 
+                                 } 
+                             %> 
+                         </select>   
+                         <br>
                             </div>
 
                             <br>

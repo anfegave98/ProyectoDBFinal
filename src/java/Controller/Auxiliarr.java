@@ -66,9 +66,9 @@ public class Auxiliarr extends HttpServlet {
             AuxiliarDAO obj = new AuxiliarDAO();
             
             ArrayList<Auxiliar> lista = (ArrayList<Auxiliar>) obj.getAllAuxiliar();
-            
+           
             request.setAttribute("listaAuxiliares", lista);
-            
+           
            request.getRequestDispatcher("Auxiliar.jsp").forward(request, response);
 
         } catch (SQLException ex) {
@@ -80,22 +80,22 @@ public class Auxiliarr extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
        try {
-           int id_auxiliar =Integer.parseInt(request.getParameter("idAuxilair"));
+           int id_auxiliar =Integer.parseInt(request.getParameter("idAuxiliar"));
            String nombre = (String)request.getParameter("nombre");
            String apellido = (String)request.getParameter("apellido");
            String fecha_entrada = (String)request.getParameter("fechaE");
            String turno = (String)request.getParameter("turno");
            int id_supervisor = Integer.parseInt(request.getParameter("idSupervisor"));
-          
+           
 
 
             AuxiliarDAO dao = new AuxiliarDAO();
             Auxiliar tab = new Auxiliar(id_auxiliar, nombre, apellido, fecha_entrada, turno, id_supervisor);
-            
             dao.addAuxiliar(tab);
+            
            
             
-            response.sendRedirect("Auxiiarr");
+            response.sendRedirect("Auxiliarr");
             
         } catch (SQLException ex) {
             Logger.getLogger(Auxiliarr.class.getName()).log(Level.SEVERE, null, ex);

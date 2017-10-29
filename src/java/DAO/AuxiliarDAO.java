@@ -32,7 +32,7 @@ public class AuxiliarDAO {
      public boolean addAuxiliar(Auxiliar auxiliar) throws SQLException {
         boolean result = false;
         Connection connection = DbUtil.getConnection();
-        String query = "insert into auxiliar (auxiliar.id_auxiliar,auxiliar.nombre_auxiliar,auxiliar.apellido,auxiliar.fecha_entrada,auxiliar.turno,auxiliar.id_supervisor) values (?,?,?,?,?,?);";
+        String query = "insert into auxiliar (auxiliar.id_auxiliar,auxiliar.nombre_auxiliar,auxiliar.apellido_auxiliar,auxiliar.fecha_entrada,auxiliar.turno,auxiliar.id_supervisor) values (?, ?, ?, ?, ?, ?);";
         
         PreparedStatement preparedStmt = null;
         try {
@@ -67,8 +67,8 @@ public class AuxiliarDAO {
         return result;
     }
       
-      public List<Auxiliar> getAllAuxiliar() throws SQLException {
-        List<Auxiliar> auxiliar = null;
+      public ArrayList<Auxiliar> getAllAuxiliar() throws SQLException {
+        ArrayList<Auxiliar> auxiliar = null;
         boolean result = false;
         String query = "SELECT * FROM auxiliar";
         Connection connection = DbUtil.getConnection();
