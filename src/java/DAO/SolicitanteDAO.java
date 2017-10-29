@@ -174,6 +174,32 @@ public class SolicitanteDAO {
         return solicitante;
 
     }
+    
+     public boolean updateSolicitante(int a, String nombre, String apellido, String escuela,String tipo) throws SQLException {
+        boolean result = false;
+        Connection connection = DbUtil.getConnection();
+        String query = "update solicitante set nombre_solicitante = ?, apellido_solicitante = ?, escuela = ?, tipo = ? where id_solicitante = "+a;
+        PreparedStatement preparedStmt = null;
+        
+         
+        try {
+            preparedStmt = connection.prepareStatement(query);
+            preparedStmt.setString(1, nombre);
+            preparedStmt.setString(2, apellido);
+            preparedStmt.setString(3, escuela);
+            preparedStmt.setString(4, tipo);
+      
+            
+            if (preparedStmt.executeUpdate() > 0) {
+                result = true;
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return result;
+    }
 
     
 }

@@ -161,6 +161,32 @@ public class SupervisorDAO {
         return supervisor;
 
     }
+        
+         public boolean updateSupervisor(int a, String nombre, String apellido, String fechaEntrada) throws SQLException {
+        boolean result = false;
+        Connection connection = DbUtil.getConnection();
+        String query = "update supervisor set nombre_supervisor = ?, apellido_supervisor = ?, fechaEntrada = ? where id_supervisor = "+a;
+        PreparedStatement preparedStmt = null;
+           
+         
+        try {
+            preparedStmt = connection.prepareStatement(query);
+            preparedStmt.setString(1, nombre);
+            preparedStmt.setString(2, apellido);
+            preparedStmt.setString(3, fechaEntrada);
+            
+      
+            
+            if (preparedStmt.executeUpdate() > 0) {
+                result = true;
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return result;
+    }
     
 
        
