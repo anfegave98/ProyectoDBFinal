@@ -12,6 +12,42 @@
         <servlet-name>BuscarActivos</servlet-name>
         <servlet-class>Controller.BuscarActivos</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>Solicitantee</servlet-name>
+        <servlet-class>Controller.Solicitantee</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>BuscarSolicitantes</servlet-name>
+        <servlet-class>Controller.BuscarSolicitantes</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>EliminarSolicitantes</servlet-name>
+        <servlet-class>Controller.EliminarSolicitantes</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>Auxiliarr</servlet-name>
+        <servlet-class>Controller.Auxiliarr</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>BuscarAuxiliares</servlet-name>
+        <servlet-class>Controller.BuscarAuxiliares</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>EliminarAuxiliares</servlet-name>
+        <servlet-class>Controller.EliminarAuxiliares</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>Supervisorr</servlet-name>
+        <servlet-class>Controller.Supervisorr</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>BuscarSupervisores</servlet-name>
+        <servlet-class>Controller.BuscarSupervisores</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>EliminarSupervisores</servlet-name>
+        <servlet-class>Controller.EliminarSupervisores</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Activoo</servlet-name>
         <url-pattern>/Activoo</url-pattern>
@@ -23,6 +59,42 @@
     <servlet-mapping>
         <servlet-name>BuscarActivos</servlet-name>
         <url-pattern>/BuscarActivos</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Solicitantee</servlet-name>
+        <url-pattern>/Solicitantee</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>BuscarSolicitantes</servlet-name>
+        <url-pattern>/BuscarSolicitantes</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>EliminarSolicitantes</servlet-name>
+        <url-pattern>/EliminarSolicitantes</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Auxiliarr</servlet-name>
+        <url-pattern>/Auxiliarr</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>BuscarAuxiliares</servlet-name>
+        <url-pattern>/BuscarAuxiliares</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>EliminarAuxiliares</servlet-name>
+        <url-pattern>/EliminarAuxiliares</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Supervisorr</servlet-name>
+        <url-pattern>/Supervisorr</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>BuscarSupervisores</servlet-name>
+        <url-pattern>/BuscarSupervisores</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>EliminarSupervisores</servlet-name>
+        <url-pattern>/EliminarSupervisores</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
