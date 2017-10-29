@@ -183,4 +183,31 @@ public class AuxiliarDAO {
 
     }
       
+        public boolean updateAuxiliar(int a, String nombre, String apellido, String fechaEntrada,String turno) throws SQLException {
+        boolean result = false;
+        Connection connection = DbUtil.getConnection();
+        String query = "update auxiliar set nombre_auxiliar = ?, apellido_auxiliar = ?, fecha_entrada = ?, turno = ? where id_auxiliar = "+a;
+        PreparedStatement preparedStmt = null;
+     
+        
+        try {
+            preparedStmt = connection.prepareStatement(query);
+            preparedStmt.setString(1, nombre);
+            preparedStmt.setString(2, apellido);
+            preparedStmt.setString(3, fechaEntrada);
+            preparedStmt.setString(4, turno);
+          
+            
+            
+            if (preparedStmt.executeUpdate() > 0) {
+                result = true;
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return result;
+    }
+      
 }

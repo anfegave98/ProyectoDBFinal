@@ -198,5 +198,35 @@ public class ActivoDAO {
         return activo;
 
     }
+    
+     public boolean updateActivo(int a, String tipo, String fabricante, String fecha_compra,String ultimo_mantenimiento,String estado,String prestado,int calificacion) throws SQLException {
+        boolean result = false;
+        Connection connection = DbUtil.getConnection();
+        String query = "update activo set tipo = ?, fabricante = ?, fecha_compra = ?, ultimo_mantenimiento = ?, estado = ?, prestado = ?, calificacion = ? where id_auxiliar = "+a;
+        PreparedStatement preparedStmt = null;
+        
+       
+        
+        try {
+            preparedStmt = connection.prepareStatement(query);
+            preparedStmt.setString(1, tipo);
+            preparedStmt.setString(2, fabricante);
+            preparedStmt.setString(3, fecha_compra);
+            preparedStmt.setString(4, ultimo_mantenimiento);
+            preparedStmt.setString(5, estado);
+            preparedStmt.setString(6, prestado);
+            preparedStmt.setInt(7, calificacion);
+            
+            if (preparedStmt.executeUpdate() > 0) {
+                result = true;
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return result;
+    }
+
 
 }
