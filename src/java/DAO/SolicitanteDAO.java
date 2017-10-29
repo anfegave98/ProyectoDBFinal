@@ -94,7 +94,7 @@ public class SolicitanteDAO {
 
                 
                 escuela = rs.getString("escuela");
-                registro.setEscuela(apellido);
+                registro.setEscuela(escuela);
                 
                 tipo = rs.getString("tipo");
                 registro.setTipo(tipo);

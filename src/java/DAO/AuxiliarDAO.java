@@ -101,9 +101,10 @@ public class AuxiliarDAO {
                 registro.setFechaEntrada(fechaEntrada);
                 
                 turno = rs.getString("turno");
-                registro.setApellido(apellido);
+                registro.setTurno(turno);
                
                 id_supervisor =  rs.getInt("id_supervisor");
+                registro.setId_supervisor(id_supervisor);
                 
                 auxiliar.add(registro);
 
