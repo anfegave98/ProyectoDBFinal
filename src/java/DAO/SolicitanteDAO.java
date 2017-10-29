@@ -62,10 +62,67 @@ public class SolicitanteDAO {
         return result;
     }
     
-    public List<Solicitante> getAllSolicitante() throws SQLException {
-        List<Solicitante> solicitante = null;
+    public ArrayList<Solicitante> getAllSolicitante() throws SQLException {
+        ArrayList<Solicitante> solicitante = null;
         boolean result = false;
         String query = "SELECT * FROM solicitante";
+        Connection connection = DbUtil.getConnection();
+        try {
+
+            Statement st = connection.createStatement();
+            ResultSet rs = st.executeQuery(query);
+
+           int id = 0;
+           String nombre = null; 
+           String apellido = null;
+           String escuela = null;
+           String tipo = null;
+
+            while (rs.next()) {
+                if (solicitante == null) {
+                    solicitante = new ArrayList<Solicitante>();
+                }
+                Solicitante registro = new Solicitante(id, nombre, apellido, escuela, tipo);
+                id = rs.getInt("id_solicitante");
+                registro.setId(id);
+
+                nombre = rs.getString("nombre_solicitante");
+                registro.setNombre(nombre);
+                
+                apellido = rs.getString("apellido_solicitante");
+                registro.setApellido(apellido);
+
+                
+                escuela = rs.getString("escuela");
+                registro.setEscuela(escuela);
+                
+                tipo = rs.getString("tipo");
+                registro.setTipo(tipo);
+                
+                solicitante.add(registro);
+
+            }
+            if (solicitante != null) {
+                for (int i = 0; i < solicitante.size(); i++) {
+                    System.out.println(solicitante.get(i).getId() + " " + solicitante.get(i).getNombre()+ " " + solicitante.get(i).getApellido()+" " + solicitante.get(i).getEscuela()+ " " + solicitante.get(i).getTipo());
+                }
+            }
+            st.close();
+
+        } catch (SQLException e) {
+            System.out.println("Problemas al obtener la lista de Solicitantes");
+            e.printStackTrace();
+        }
+
+        return solicitante;
+
+    }
+    
+    
+    public ArrayList<Solicitante> getSolicitanteID(int a) throws SQLException {
+        ArrayList<Solicitante> solicitante = null;
+        boolean result = false;
+        String query = "SELECT * FROM solicitante where id_solicitante ="+a;
         Connection connection = DbUtil.getConnection();
         try {
 

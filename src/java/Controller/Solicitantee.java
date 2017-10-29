@@ -5,8 +5,16 @@
  */
 package Controller;
 
+import DAO.ActivoDAO;
+import DAO.SolicitanteDAO;
+import Model.Activo;
+import Model.Solicitante;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -35,10 +43,10 @@ public class Solicitantee extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet Solicitantee</title>");            
+            out.println("<title>Servlet AñadirActivos</title>");            
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet Solicitantee at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet AñadirActivos at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -56,31 +64,46 @@ public class Solicitantee extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
-    }
+         try {
+            SolicitanteDAO obj = new SolicitanteDAO();
+            
+            ArrayList<Solicitante> lista = (ArrayList<Solicitante>) obj.getAllSolicitante();
+            
+            request.setAttribute("listaSolicitantess", lista);
+            
+           request.getRequestDispatcher("Solicitantes.jsp").forward(request, response);
 
-    /**
-     * Handles the HTTP <code>POST</code> method.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
+        } catch (SQLException ex) {
+            Logger.getLogger(Activoo.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+    }
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+       try {
+           int id_solicitante =Integer.parseInt(request.getParameter("id_Solicitante"));
+           String nombre = (String)request.getParameter("nombre_solicitante");
+           String apellido = (String)request.getParameter("apellido_solicitante");
+           String escuela = (String)request.getParameter("escuela");
+           String tipo = (String)request.getParameter("tipo");
+         
+
+
+            SolicitanteDAO dao = new SolicitanteDAO();
+            Solicitante tab = new Solicitante(id_solicitante, nombre, apellido, escuela, tipo);
+            dao.addSolicitante(tab);
+           
+            
+            response.sendRedirect("Solicitantee");
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(Activoo.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
-    /**
-     * Returns a short description of the servlet.
-     *
-     * @return a String containing servlet description
-     */
     @Override
     public String getServletInfo() {
         return "Short description";
     }// </editor-fold>
-
 }

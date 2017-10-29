@@ -111,12 +111,13 @@ public class SupervisorDAO {
 
     }
         
-        public Supervisor getSupervisorId(int a) throws SQLException {
-        Supervisor supervisor = new Supervisor();
+        public ArrayList<Supervisor> getSupervisorID(int a) throws SQLException {
+        ArrayList<Supervisor> supervisor = null;
         boolean result = false;
-        String query = "select * from supervisor where id_supervisor = "+ a;
+        String query = "SELECT * FROM supervisor where id_supervisor = "+a;
         Connection connection = DbUtil.getConnection();
         try {
+
             Statement st = connection.createStatement();
             ResultSet rs = st.executeQuery(query);
 
@@ -125,33 +126,42 @@ public class SupervisorDAO {
             String apellido = null;
             String fecha_Entrada = null;
 
-           
-             
+            while (rs.next()) {
+                if (supervisor == null) {
+                    supervisor = new ArrayList<Supervisor>();
+                }
+                Supervisor registro = new Supervisor(id,nombre,apellido, fecha_Entrada);
                 id = rs.getInt("id_supervisor");
-                supervisor.setId(id);
-                
+                registro.setId(id);
+
                 nombre = rs.getString("nombre_supervisor");
-                supervisor.setNombre(nombre);
+                registro.setNombre(nombre);
                 
                 apellido = rs.getString("apellido_supervisor");
-                supervisor.setApellido(apellido);
+                registro.setApellido(nombre);
 
-                fecha_Entrada = rs.getString("fecha_entrada");
-                supervisor.setFechaEntrada(fecha_Entrada);
-                
-                
-            
-           
+                fecha_Entrada = rs.getString("fecha_Entrada");
+                registro.setFechaEntrada(fecha_Entrada);
+
+                supervisor.add(registro);
+
+            }
+            if (supervisor != null) {
+                for (int i = 0; i < supervisor.size(); i++) {
+                    System.out.println(supervisor.get(i).getId() + " " + supervisor.get(i).getNombre() + " " + supervisor.get(i).getApellido() + " " + supervisor.get(i).getFechaEntrada());
+                }
+            }
             st.close();
 
         } catch (SQLException e) {
-            System.out.println("Problemas al obtener el supervisor");
+            System.out.println("Problemas al obtener la lista de Supervisores");
             e.printStackTrace();
         }
-            System.out.println(supervisor.getApellido());
+
         return supervisor;
 
     }
+    
 
        
     

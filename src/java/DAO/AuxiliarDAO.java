@@ -124,4 +124,63 @@ public class AuxiliarDAO {
         return auxiliar;
 
     }
+      
+      public ArrayList<Auxiliar> getAuxiliarID(int a) throws SQLException {
+        ArrayList<Auxiliar> auxiliar = null;
+        boolean result = false;
+        String query = "SELECT * FROM auxiliar where id_auxiliar = "+a;
+        Connection connection = DbUtil.getConnection();
+        try {
+
+            Statement st = connection.createStatement();
+            ResultSet rs = st.executeQuery(query);
+
+         int id=0;
+         String nombre = null;
+         String apellido = null;
+         String fechaEntrada = null;
+         String turno = null;
+         int id_supervisor = 0;
+            while (rs.next()) {
+                if (auxiliar == null) {
+                    auxiliar = new ArrayList<Auxiliar>();
+                }
+                Auxiliar registro = new Auxiliar(id, nombre, apellido, fechaEntrada, turno, id_supervisor);
+                id = rs.getInt("id_auxiliar");
+                registro.setId(id);
+
+                nombre = rs.getString("nombre_auxiliar");
+                registro.setNombre(nombre);
+
+                apellido= rs.getString("apellido_auxiliar");
+                registro.setApellido(apellido);
+                
+                fechaEntrada= rs.getString("fecha_entrada");
+                registro.setFechaEntrada(fechaEntrada);
+                
+                turno = rs.getString("turno");
+                registro.setTurno(turno);
+               
+                id_supervisor =  rs.getInt("id_supervisor");
+                registro.setId_supervisor(id_supervisor);
+                
+                auxiliar.add(registro);
+
+            }
+            if (auxiliar != null) {
+                for (int i = 0; i < auxiliar.size(); i++) {
+                    System.out.println(auxiliar.get(i).getId() + " " + auxiliar.get(i).getNombre() + " " + auxiliar.get(i).getApellido()+ " " + auxiliar.get(i).getFechaEntrada()+ " " + auxiliar.get(i).getId_supervisor());
+                }
+            }
+            st.close();
+
+        } catch (SQLException e) {
+            System.out.println("Problemas al obtener la lista de Auxiliares");
+            e.printStackTrace();
+        }
+
+        return auxiliar;
+
+    }
+      
 }
