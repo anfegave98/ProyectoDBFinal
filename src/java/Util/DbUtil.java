@@ -26,7 +26,7 @@ public class DbUtil {
 			   }
 
 			  try {
-			    CONEXION = DriverManager.getConnection("jdbc:mysql://localhost:3306/GestorDB","root", "root");
+			    CONEXION = DriverManager.getConnection("jdbc:mysql://localhost:3380/GestorDB","root", "");
      			  } catch (SQLException e) {
 			     throw new SQLException(e);
 			  }
