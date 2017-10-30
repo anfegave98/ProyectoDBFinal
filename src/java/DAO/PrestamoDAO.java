@@ -68,8 +68,8 @@ public class PrestamoDAO {
         return result;
     }
      
-     public List<Prestamo> getAllPrestamo() throws SQLException {
-        List<Prestamo> prestamo = null;
+     public ArrayList<Prestamo> getAllPrestamo() throws SQLException {
+        ArrayList<Prestamo> prestamo = null;
         boolean result = false;
         String query = "SELECT * FROM prestamo";
         Connection connection = DbUtil.getConnection();
