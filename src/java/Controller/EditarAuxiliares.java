@@ -117,7 +117,7 @@ public class EditarAuxiliares extends HttpServlet {
         } catch (SQLException ex) {
             Logger.getLogger(EditarActivos.class.getName()).log(Level.SEVERE, null, ex);
         }
-        response.sendRedirect("Activoo");
+        response.sendRedirect("Auxiliarr");
 
     }
 
