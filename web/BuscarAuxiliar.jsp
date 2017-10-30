@@ -116,8 +116,7 @@
                             <td><%=aux.getFechaEntrada()%></td>
                             <td><%=aux.getTurno()%></td>
                             <td><%=aux.getId_supervisor()%></td>
-                            <td>
-                            </td>
+                            
                         </tr>
                         <% }
                             }

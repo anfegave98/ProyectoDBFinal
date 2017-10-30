@@ -49,7 +49,7 @@ public class SolicitanteDAO {
     public boolean deleteSolicitante(int a) throws SQLException {
         boolean result = false;
         Connection connection = DbUtil.getConnection();
-        String query = "delete from tabla where id_solicitante = ?";
+        String query = "delete from solicitante where id_solicitante = ?";
         PreparedStatement preparedStmt = null;
         try {
             preparedStmt = connection.prepareStatement(query);

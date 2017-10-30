@@ -77,10 +77,10 @@
                     <p></p>
                     <hr>
                     <div class="container">   
-                        <form class="form-inline">
+                        <form class="form-inline" action="EliminarSolicitantes" method="POST">
                             <div class="form-group">
                                 <label for="idusuario">ID Solicitante:</label>
-                                <input  class="form-control" id="idusuario">
+                                <input  class="form-control" name="idSolicitante">
                             </div>
 
                             <br>

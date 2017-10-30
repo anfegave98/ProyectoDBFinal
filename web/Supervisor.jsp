@@ -1,3 +1,5 @@
+<%@page import="java.util.ArrayList"%>
+<%@page import="Model.Supervisor"%>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -73,7 +75,7 @@
                 <div class="col-sm-8 text-left"> 
                     <h1>Supervisores</h1>
                     <div class="span12">&nbsp;</div>
-                    <button onclick="window.location.href = 'AñadirSupervisor.jsp'" type="button" type="button" class="btn-sm btn-success">Añadir Supervisor</button>
+                    <button onclick="window.location.href = 'AnadirSupervisor.jsp'" type="button" type="button" class="btn-sm btn-success">Añadir Supervisor</button>
                     <button onclick="window.location.href = 'EliminarSupervisor.jsp'" type="button" type="button" class="btn-sm btn-danger">Eliminar Supervisor</button>
                     <button onclick="window.location.href = 'BuscarSupervisor.jsp'" type="button" type="button" class="btn-sm btn-warning">Buscar Supervisor</button>
                     <div class="span12">&nbsp;</div>
@@ -89,6 +91,28 @@
 
 
                             </tr>
+                            <% if (request.getAttribute("listaSupervisores") != null) {
+                                ArrayList<Supervisor> list = (ArrayList<Supervisor>) request.getAttribute("listaSupervisores");
+                                if (list != null)
+                                    for (Supervisor aux : list) {
+
+
+                        %>
+                        <tr>
+                            <td><%=aux.getId()%></td>
+                            <td><%=aux.getNombre()%></td>
+                            <td><%=aux.getApellido()%></td>
+                            <td><%=aux.getFechaEntrada()%></td>
+                        
+  
+                            
+                            <td>
+                                <button onclick="window.location.href = 'EditarSupervisores?id=<%=aux.getId()%>'" class="btn btn-info">Editar</button>
+                            </td>
+                        </tr>
+                        <% }
+                            }
+                        %>
                         </table>
                     </div>
                     <hr>

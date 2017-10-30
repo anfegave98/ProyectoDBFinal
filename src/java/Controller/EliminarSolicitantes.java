@@ -63,7 +63,7 @@ public class EliminarSolicitantes extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+      
         
           ArrayList<Solicitante> solicitantes =new ArrayList<>();
         try {
@@ -91,12 +91,13 @@ public class EliminarSolicitantes extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+     
         
-        int idA =Integer.parseInt(request.getParameter("eliminarSolicitante"));
+        int idS =Integer.parseInt(request.getParameter("idSolicitante"));
+        System.out.println("sadsad"+idS);
         try {
             SolicitanteDAO a = new SolicitanteDAO();
-            a.deleteSolicitante(idA);
+            a.deleteSolicitante(idS);
         } catch (SQLException ex) {
             Logger.getLogger(EliminarSolicitantes.class.getName()).log(Level.SEVERE, null, ex);
         }

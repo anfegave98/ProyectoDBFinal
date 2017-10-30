@@ -77,23 +77,23 @@
                     <p></p>
                     <hr>
                     <div class="container">   
-                        <form class="form-inline">
+                        <form class="form-inline" action="Supervisorr" method="POST">
                             <div class="form-group">
                                 <label for="Idusuario">ID Supervisor:</label>
-                                <input class="form-control" id="Idusuario">
+                                <input class="form-control" name="idSupervisor">
                             </div>
                             <div class="form-group">
                                 <label for="nombre">Nombre:</label>
-                                <input  class="form-control" id="nombre">
+                                <input  class="form-control" name="nombre">
                             </div>
                             <div class="form-group">
                                 <label for="tipo">Apellido:</label>
-                                <input  class="form-control" id="tipo">
+                                <input  class="form-control" nombre="apellido">
                             </div>
                             <div class="span12">&nbsp;</div>
                             <div class="form-group">
                                 <label for="calificaion">Fecha Entrada:</label>
-                                <input  class="form-control" id="calificacion">
+                                <input  class="form-control" name="fechaE">
                             </div>
                             <br>
                             <div class="span12">&nbsp;</div>

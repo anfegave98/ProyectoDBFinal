@@ -62,7 +62,7 @@ public class BuscarSolicitantes extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        
         
         try {
             SolicitanteDAO obj = new SolicitanteDAO();
@@ -90,7 +90,7 @@ public class BuscarSolicitantes extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        
     }
 
     /**

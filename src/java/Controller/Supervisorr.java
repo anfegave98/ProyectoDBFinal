@@ -63,7 +63,7 @@ public class Supervisorr extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+       
         
         try {
             SupervisorDAO obj = new SupervisorDAO();
@@ -84,21 +84,18 @@ public class Supervisorr extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+       
         
           try {
-           int id_activo =Integer.parseInt(request.getParameter("idActivo"));
-           String tipo = (String)request.getParameter("tipo");
-           String fabricante = (String)request.getParameter("fabricante");
-           String fecha_compra = (String)request.getParameter("fechaC");
-           String mantenimiento = (String)request.getParameter("mantenimiento");
-           String estado = (String)request.getParameter("estado");
-           String prestado = (String)request.getParameter("prestado");
-           int calificacion =Integer.parseInt(request.getParameter("calificacion"));
+           int id_supervisor =Integer.parseInt(request.getParameter("idSupervisor"));
+           String nombre = (String)request.getParameter("nombre");
+           String apellido = (String)request.getParameter("apellido");
+           String fechaEntrada = (String)request.getParameter("fechaE");
+          
 
-
+              System.out.println(id_supervisor+fechaEntrada+"   sdasdsad");
             SupervisorDAO dao = new SupervisorDAO();
-            Supervisor tab = new Supervisor(id_activo, estado, prestado, fecha_compra);
+            Supervisor tab = new Supervisor(id_supervisor, nombre, apellido, fechaEntrada);
             
             dao.addSupervisor(tab);
            

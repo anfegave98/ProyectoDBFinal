@@ -29,7 +29,7 @@ public class SupervisorDAO {
       public boolean addSupervisor(Supervisor supervisor) throws SQLException {
         boolean result = false;
         Connection connection = DbUtil.getConnection();
-        String query = "insert into supervisor (supervisor.id_supervisor,supervisor.nombre_supervidor,supervisor.apellido_supervisor,fecha_Entrada) values (?,?,?,? );";
+        String query = "insert into supervisor (supervisor.id_supervisor,supervisor.nombre_supervisor,supervisor.apellido_supervisor,supervisor.fecha_entrada) values (?, ?, ?, ? );";
         PreparedStatement preparedStmt = null;
         try {
             preparedStmt = connection.prepareStatement(query);
@@ -60,8 +60,8 @@ public class SupervisorDAO {
         return result;
     }
        
-        public List<Supervisor> getAllSupervisor() throws SQLException {
-        List<Supervisor> supervisor = null;
+        public ArrayList<Supervisor> getAllSupervisor() throws SQLException {
+        ArrayList<Supervisor> supervisor = null;
         boolean result = false;
         String query = "SELECT * FROM supervisor";
         Connection connection = DbUtil.getConnection();
@@ -87,9 +87,9 @@ public class SupervisorDAO {
                 registro.setNombre(nombre);
                 
                 apellido = rs.getString("apellido_supervisor");
-                registro.setApellido(nombre);
+                registro.setApellido(apellido);
 
-                fecha_Entrada = rs.getString("fecha_Entrada");
+                fecha_Entrada = rs.getString("fecha_entrada");
                 registro.setFechaEntrada(fecha_Entrada);
 
                 supervisor.add(registro);
