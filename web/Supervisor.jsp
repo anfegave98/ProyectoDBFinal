@@ -107,7 +107,7 @@
   
                             
                             <td>
-                                <button onclick="window.location.href = 'EditarSupervisores?id=<%=aux.getId()%>'" class="btn btn-info">Editar</button>
+                                <button onclick="window.location.href = 'EditarSupervisores?id_supervisor=<%=aux.getId()%>&nombre=<%=aux.getNombre()%>&apellido=<%=aux.getApellido()%>&fechaEntrada=<%=aux.getFechaEntrada()%>'" class="btn btn-info">Editar</button>
                             </td>
                         </tr>
                         <% }

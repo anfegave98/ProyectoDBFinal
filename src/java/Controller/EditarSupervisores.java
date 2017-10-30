@@ -5,8 +5,13 @@
  */
 package Controller;
 
+import DAO.AuxiliarDAO;
+import DAO.SupervisorDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -35,7 +40,7 @@ public class EditarSupervisores extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet EditarSupervisores</title>");            
+            out.println("<title>Servlet EditarSupervisores</title>");
             out.println("</head>");
             out.println("<body>");
             out.println("<h1>Servlet EditarSupervisores at " + request.getContextPath() + "</h1>");
@@ -56,7 +61,25 @@ public class EditarSupervisores extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        try {
+            SupervisorDAO dao = new SupervisorDAO();
+
+            int id_supervisor = Integer.parseInt(request.getParameter("id_supervisor"));
+            String nombre = request.getParameter("nombre");
+            String apellido = request.getParameter("apellido");
+            String fechaEntrada = request.getParameter("fechaEntrada");
+
+            request.setAttribute("id_supervisor", id_supervisor);
+            request.setAttribute("nombre", nombre);
+            request.setAttribute("apellido", apellido);
+            request.setAttribute("fechaEntrada", fechaEntrada);
+
+            request.getRequestDispatcher("EditarSupervisor.jsp").forward(request, response);
+
+        } catch (SQLException ex) {
+            Logger.getLogger(EditarSupervisores.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
     }
 
     /**
@@ -70,7 +93,21 @@ public class EditarSupervisores extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        try {
+
+            int id_supervisor = Integer.parseInt(request.getParameter("id_supervisor"));
+            String nombre = (String) request.getParameter("nombre");
+            String apellido = (String) request.getParameter("apellido");
+            String fechaEntrada = (String) request.getParameter("fechaEntrada");
+
+            SupervisorDAO dao = new SupervisorDAO();
+            dao.updateSupervisor(id_supervisor, nombre, apellido, fechaEntrada);
+
+        } catch (SQLException ex) {
+            Logger.getLogger(EditarSupervisores.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        response.sendRedirect("Supervisorr");
+
     }
 
     /**
@@ -82,5 +119,4 @@ public class EditarSupervisores extends HttpServlet {
     public String getServletInfo() {
         return "Short description";
     }// </editor-fold>
-
 }

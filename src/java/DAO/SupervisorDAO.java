@@ -165,7 +165,7 @@ public class SupervisorDAO {
          public boolean updateSupervisor(int a, String nombre, String apellido, String fechaEntrada) throws SQLException {
         boolean result = false;
         Connection connection = DbUtil.getConnection();
-        String query = "update supervisor set nombre_supervisor = ?, apellido_supervisor = ?, fechaEntrada = ? where id_supervisor = "+a;
+        String query = "update supervisor set nombre_supervisor = ?, apellido_supervisor = ?, fecha_entrada = ? where id_supervisor = "+a;
         PreparedStatement preparedStmt = null;
            
          
