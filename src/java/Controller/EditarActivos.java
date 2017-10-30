@@ -5,8 +5,12 @@
  */
 package Controller;
 
+import DAO.ActivoDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -56,7 +60,21 @@ public class EditarActivos extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+         try {
+            ActivoDAO dao = new ActivoDAO();
+
+            String n = request.getParameter("n");
+            String id = request.getParameter("id");
+            request.setAttribute("n", n);
+            request.setAttribute("id", id);
+            
+            
+           request.getRequestDispatcher("EditarActivo.jsp").forward(request, response);
+
+        } catch (SQLException ex) {
+            Logger.getLogger(EditarActivos.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
     }
 
     /**
@@ -70,7 +88,25 @@ public class EditarActivos extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+           try {
+            int idActivo = Integer.parseInt(request.getParameter("idActivo"));
+            String tipo=(String) request.getParameter("tipo");
+            String fabricante=(String) request.getParameter("fabricante");
+            String fechaC=(String) request.getParameter("fechaC");
+            String mantenimiento=(String) request.getParameter("mantenimiento");
+            String estado=(String) request.getParameter("estado");          
+            String prestado=(String) request.getParameter("prestado");
+            int calificacion=Integer.parseInt(request.getParameter("calificacion"));
+           
+            ActivoDAO dao = new ActivoDAO();
+            dao.updateActivo(idActivo, tipo, fabricante, fechaC, mantenimiento, estado, prestado, calificacion);
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(EditarActivos.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        response.sendRedirect("Activoo");
+        
+       
     }
 
     /**
