@@ -63,11 +63,13 @@ public class BuscarSupervisores extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        System.out.println("Hola1");
         
          try {
             SupervisorDAO obj = new SupervisorDAO();
              int id=Integer.parseInt(request.getParameter("idSupervisor"));
+             System.out.println("Hola");
+             System.out.println(id);
             ArrayList<Supervisor> lista = (ArrayList<Supervisor>)obj.getSupervisorID(id);
             
             request.setAttribute("listaSupervisoresBusqueda", lista);
@@ -92,7 +94,7 @@ public class BuscarSupervisores extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+      
     }
 
     /**

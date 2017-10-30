@@ -74,7 +74,7 @@ public class BuscarAuxiliares extends HttpServlet {
            request.getRequestDispatcher("BuscarAuxiliar.jsp").forward(request, response);
 
         } catch (SQLException ex) {
-            Logger.getLogger(BuscarActivos.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(BuscarAuxiliares.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 

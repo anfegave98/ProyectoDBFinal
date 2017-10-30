@@ -64,6 +64,10 @@
         <servlet-name>EditarSolicitantes</servlet-name>
         <servlet-class>Controller.EditarSolicitantes</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>EditarPrestamos</servlet-name>
+        <servlet-class>Controller.EditarPrestamos</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Activoo</servlet-name>
         <url-pattern>/Activoo</url-pattern>
@@ -127,6 +131,10 @@
     <servlet-mapping>
         <servlet-name>EditarSolicitantes</servlet-name>
         <url-pattern>/EditarSolicitantes</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>EditarPrestamos</servlet-name>
+        <url-pattern>/EditarPrestamos</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

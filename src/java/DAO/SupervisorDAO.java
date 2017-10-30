@@ -138,9 +138,9 @@ public class SupervisorDAO {
                 registro.setNombre(nombre);
                 
                 apellido = rs.getString("apellido_supervisor");
-                registro.setApellido(nombre);
+                registro.setApellido(apellido);
 
-                fecha_Entrada = rs.getString("fecha_Entrada");
+                fecha_Entrada = rs.getString("fecha_entrada");
                 registro.setFechaEntrada(fecha_Entrada);
 
                 supervisor.add(registro);

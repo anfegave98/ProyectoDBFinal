@@ -88,7 +88,7 @@
                             </div>
                             <div class="form-group">
                                 <label for="tipo">Apellido:</label>
-                                <input  class="form-control" nombre="apellido">
+                                <input  class="form-control" name="apellido">
                             </div>
                             <div class="span12">&nbsp;</div>
                             <div class="form-group">

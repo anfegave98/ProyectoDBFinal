@@ -63,12 +63,11 @@ public class EliminarSupervisores extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
         
           ArrayList<Supervisor> supervisores =new ArrayList<>();
         try {
             SupervisorDAO a = new SupervisorDAO();
-            supervisores = (ArrayList<Supervisor>) a.getAllSupervisor();
+            supervisores=a.getAllSupervisor();
             request.setAttribute("supervisores", supervisores);
             RequestDispatcher rd = getServletContext().getRequestDispatcher("/EliminarSupervisor.jsp"); 
              rd.forward(request, response); 
@@ -91,7 +90,7 @@ public class EliminarSupervisores extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+     
         
         int idA=Integer.parseInt(request.getParameter("eliminarSupervisor"));
         try {

@@ -76,7 +76,7 @@
                     <h1>Supervisores</h1>
                     <div class="span12">&nbsp;</div>
                     <button onclick="window.location.href = 'AnadirSupervisor.jsp'" type="button" type="button" class="btn-sm btn-success">Añadir Supervisor</button>
-                    <button onclick="window.location.href = 'EliminarSupervisor.jsp'" type="button" type="button" class="btn-sm btn-danger">Eliminar Supervisor</button>
+                    <button onclick="window.location.href = 'EliminarSupervisores?action=delete'" type="button" type="button" class="btn-sm btn-danger">Eliminar Supervisor</button>
                     <button onclick="window.location.href = 'BuscarSupervisor.jsp'" type="button" type="button" class="btn-sm btn-warning">Buscar Supervisor</button>
                     <div class="span12">&nbsp;</div>
 

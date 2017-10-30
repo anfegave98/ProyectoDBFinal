@@ -1,3 +1,5 @@
+<%@page import="java.util.ArrayList"%>
+<%@page import="Model.Supervisor"%>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -77,11 +79,11 @@
                     <p></p>
                     <hr>
                     <div class="container">   
-                        <form class="form-inline">
+                        <form class="form-inline" action="BuscarSupervisores" method="GET">
 
-                            <div class="form-group">
+                            <div class="form-group" >
                                 <label for="idequipo">ID Supervisor:</label>
-                                <input  class="form-control" id="idequipo">
+                                <input  class="form-control" name="idSupervisor">
                             </div>
 
                             <br>
@@ -100,6 +102,24 @@
 
 
                             </tr>
+                            <% if (request.getAttribute("listaSupervisoresBusqueda") != null) {
+                                ArrayList<Supervisor> list = (ArrayList<Supervisor>) request.getAttribute("listaSupervisoresBusqueda");
+                                if (list != null)
+                                    for (Supervisor aux : list) {
+
+
+                        %>
+                        <tr>
+                           <td><%=aux.getId()%></td>
+                            <td><%=aux.getNombre()%></td>
+                            <td><%=aux.getApellido()%></td>
+                            <td><%=aux.getFechaEntrada()%></td>
+                        
+                            
+                        </tr>
+                        <% }
+                            }
+                        %>
                         </table>
                     </div>
                 </div>
