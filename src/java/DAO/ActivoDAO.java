@@ -202,7 +202,7 @@ public class ActivoDAO {
      public boolean updateActivo(int a, String tipo, String fabricante, String fecha_compra,String ultimo_mantenimiento,String estado,String prestado,int calificacion) throws SQLException {
         boolean result = false;
         Connection connection = DbUtil.getConnection();
-        String query = "update activo set tipo = ?, fabricante = ?, fecha_compra = ?, ultimo_mantenimiento = ?, estado = ?, prestado = ?, calificacion = ? where id_auxiliar = "+a;
+        String query = "update activo set tipo = ?, fabricante = ?, fecha_compra = ?, ultimo_mantenimiento = ?, estado = ?, prestado = ?, calificacion = ? where id_activo = "+a;
         PreparedStatement preparedStmt = null;
         
        

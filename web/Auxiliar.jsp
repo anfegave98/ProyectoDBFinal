@@ -109,7 +109,7 @@
   
                             
                             <td>
-                                <button onclick="window.location.href = 'EditarAuxiliares?id=<%=aux.getId()%>'" class="btn btn-info">Editar</button>
+                                <button onclick="window.location.href = 'EditarAuxiliares?id_auxiliar=<%=aux.getId()%>&nombre=<%=aux.getNombre()%>&apellido=<%=aux.getApellido()%>&fechaEntrada=<%=aux.getFechaEntrada()%>&turno=<%=aux.getTurno()%>&id_supervisor=<%=aux.getId_supervisor()%>'" class="btn btn-info">Editar</button>
                             </td>
                         </tr>
                         <% }

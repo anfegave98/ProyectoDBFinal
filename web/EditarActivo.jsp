@@ -78,33 +78,41 @@
                     <hr>
                     <div class="container">   
                           <%
-            String id= (String)request.getAttribute("idActivo");
+            int id_activo=(Integer) request.getAttribute("id_activo");
+            String tipo= (String)request.getAttribute("tipo");
+            String fabricante= (String)request.getAttribute("fabricante");
+            String fecha_compra= (String)request.getAttribute("fecha_compra");
+            String ultimo_mantenimiento= (String)request.getAttribute("ultimo_mantenimiento");
+            String estado= (String)request.getAttribute("estado");
+            String prestado= (String)request.getAttribute("prestado");
+            int calificacion=(Integer) request.getAttribute("calificacion");
+
             %>
                         <form class="form-inline" action="EditarActivos" method="POST">
                             <div class="form-group">
                                 <label for="idequipo">ID Activo:</label>
-                                <input  class="form-control" name="idActivo" value="<%=id%>" readonly="readonly">
+                                <input  class="form-control" name="idActivo" value="<%=id_activo%>" readonly="readonly">
                             </div>
                             <div class="form-group">
                                 <label for="nombre">Tipo:</label>
-                                <input  class="form-control" name="tipo">
+                                <input  class="form-control" name="tipo" value="<%=tipo%>">
                             </div>
                             <div class="form-group">
                                 <label for="calificacion">Fabricante:</label>
-                                <input  class="form-control" name="fabricante">
+                                <input  class="form-control" name="fabricante" value="<%=fabricante%>">
                             </div>
                             <div class="span12">&nbsp;</div>
                             <div class="form-group">
                                 <label for="fechaC">Fecha Compra:</label>
-                                <input  class="form-control" name="fechaC">
+                                <input  class="form-control" name="fechaC" value="<%=fecha_compra%>">
                             </div>
                             <div class="form-group">
                                 <label for="prestaso">Ultimo Mant.:</label>
-                                <input  class="form-control" name="mantenimiento">
+                                <input  class="form-control" name="mantenimiento"value="<%=ultimo_mantenimiento%>">
                             </div>
                             <div class="form-group">
                                 <label for="tipo">Estado</label>
-                                <select class="form-control" name="estado">
+                                <select class="form-control" name="estado" value="<%=estado%>">
                                     <option>Excelente</option>
                                     <option>Bueno</option>
                                     <option>Regula</option>
@@ -113,14 +121,14 @@
                             </div>
                             <div class="form-group">
                                 <label for="tipo">Prestado</label>
-                                <select class="form-control" name="prestado">
+                                <select class="form-control" name="prestado" value="<%=prestado%>">
                                     <option>True</option>
                                     <option>False</option>
                                 </select>
                             </div>
                             <div class="form-group">
                                 <label for="tipo">Calificación</label>
-                                <select class="form-control" name="calificacion">
+                                <select class="form-control" name="calificacion" value="<%=calificacion%>">
                                     <option>1</option>
                                     <option>2</option>
                                     <option>3</option>

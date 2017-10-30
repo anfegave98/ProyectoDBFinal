@@ -39,7 +39,7 @@ public class EditarActivos extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet EditarActivos</title>");            
+            out.println("<title>Servlet EditarActivos</title>");
             out.println("</head>");
             out.println("<body>");
             out.println("<h1>Servlet EditarActivos at " + request.getContextPath() + "</h1>");
@@ -60,16 +60,32 @@ public class EditarActivos extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-         try {
+        try {
             ActivoDAO dao = new ActivoDAO();
+            
+            int id_activo =Integer.parseInt(request.getParameter("id_activo"));       
+            String tipo = request.getParameter("tipo");
+            String fabricante = request.getParameter("fabricante");
+            String fecha_compra = request.getParameter("fecha_compra");
+            String ultimo_mantenimiento = request.getParameter("ultimo_mantenimiento");
+            String estado = request.getParameter("estado");
+            String prestado = request.getParameter("prestado");
+            //String calificacion = request.getParameter("calificacion");
+            int calificacion =Integer.parseInt(request.getParameter("calificacion"));
+           
+           
+           
+            request.setAttribute("id_activo", id_activo);
+            request.setAttribute("tipo", tipo);
+            request.setAttribute("fabricante", fabricante);
+            request.setAttribute("fecha_compra", fecha_compra);
+            request.setAttribute("ultimo_mantenimiento", ultimo_mantenimiento);
+            request.setAttribute("estado", estado);
+            request.setAttribute("prestado", prestado);
+            request.setAttribute("calificacion", calificacion);
 
-            String n = request.getParameter("n");
-            String id = request.getParameter("id");
-            request.setAttribute("n", n);
-            request.setAttribute("id", id);
-            
-            
-           request.getRequestDispatcher("EditarActivo.jsp").forward(request, response);
+            request.getRequestDispatcher("EditarActivo.jsp").forward(request, response);
+
 
         } catch (SQLException ex) {
             Logger.getLogger(EditarActivos.class.getName()).log(Level.SEVERE, null, ex);
@@ -88,25 +104,24 @@ public class EditarActivos extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-           try {
+        try {
             int idActivo = Integer.parseInt(request.getParameter("idActivo"));
-            String tipo=(String) request.getParameter("tipo");
-            String fabricante=(String) request.getParameter("fabricante");
-            String fechaC=(String) request.getParameter("fechaC");
-            String mantenimiento=(String) request.getParameter("mantenimiento");
-            String estado=(String) request.getParameter("estado");          
-            String prestado=(String) request.getParameter("prestado");
-            int calificacion=Integer.parseInt(request.getParameter("calificacion"));
-           
+            String tipo = (String) request.getParameter("tipo");
+            String fabricante = (String) request.getParameter("fabricante");
+            String fechaC = (String) request.getParameter("fechaC");
+            String mantenimiento = (String) request.getParameter("mantenimiento");
+            String estado = (String) request.getParameter("estado");
+            String prestado = (String) request.getParameter("prestado");
+            int calificacion = Integer.parseInt(request.getParameter("calificacion"));
+
             ActivoDAO dao = new ActivoDAO();
             dao.updateActivo(idActivo, tipo, fabricante, fechaC, mantenimiento, estado, prestado, calificacion);
-            
+
         } catch (SQLException ex) {
             Logger.getLogger(EditarActivos.class.getName()).log(Level.SEVERE, null, ex);
         }
         response.sendRedirect("Activoo");
-        
-       
+
     }
 
     /**

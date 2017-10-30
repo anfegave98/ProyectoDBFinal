@@ -183,10 +183,10 @@ public class AuxiliarDAO {
 
     }
       
-        public boolean updateAuxiliar(int a, String nombre, String apellido, String fechaEntrada,String turno) throws SQLException {
+        public boolean updateAuxiliar(int a, String nombre, String apellido, String fechaEntrada,String turno, int id_supervisor) throws SQLException {
         boolean result = false;
         Connection connection = DbUtil.getConnection();
-        String query = "update auxiliar set nombre_auxiliar = ?, apellido_auxiliar = ?, fecha_entrada = ?, turno = ? where id_auxiliar = "+a;
+        String query = "update auxiliar set nombre_auxiliar = ?, apellido_auxiliar = ?, fecha_entrada = ?, turno = ?, id_supervisor = ? where id_auxiliar = "+a;
         PreparedStatement preparedStmt = null;
      
         
@@ -196,6 +196,7 @@ public class AuxiliarDAO {
             preparedStmt.setString(2, apellido);
             preparedStmt.setString(3, fechaEntrada);
             preparedStmt.setString(4, turno);
+            preparedStmt.setInt(5, id_supervisor);
           
             
             

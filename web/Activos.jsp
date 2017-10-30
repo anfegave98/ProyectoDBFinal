@@ -113,7 +113,7 @@
                             <td><%=activo.getCalificacion()%></td>
                             
                             <td>
-                                <button onclick="window.location.href = 'EditarActivos?id=<%=activo.getId_activo()%>'" class="btn btn-info">Editar</button>
+                                <button onclick="window.location.href = 'EditarActivos?id_activo=<%=activo.getId_activo()%>&tipo=<%=activo.getTipo()%>&fabricante=<%=activo.getFabricante()%>&fecha_compra=<%=activo.getFecha_compra()%>&ultimo_mantenimiento=<%=activo.getUltimo_mantenimiento()%>&estado=<%=activo.getEstado()%>&prestado=<%=activo.getPrestado()%>&calificacion=<%=activo.getCalificacion()%>'" class="btn btn-info">Editar</button>
                             </td>
                         </tr>
                         <% }
