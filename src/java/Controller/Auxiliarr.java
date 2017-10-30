@@ -41,7 +41,7 @@ public class Auxiliarr extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet Auxiliarr</title>");            
+            out.println("<title>Servlet Auxiliarr</title>");
             out.println("</head>");
             out.println("<body>");
             out.println("<h1>Servlet Auxiliarr at " + request.getContextPath() + "</h1>");
@@ -62,41 +62,38 @@ public class Auxiliarr extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-         try {
+        try {
             AuxiliarDAO obj = new AuxiliarDAO();
-            
+
             ArrayList<Auxiliar> lista = (ArrayList<Auxiliar>) obj.getAllAuxiliar();
-           
+
             request.setAttribute("listaAuxiliares", lista);
-           
-           request.getRequestDispatcher("Auxiliar.jsp").forward(request, response);
+
+            request.getRequestDispatcher("Auxiliar.jsp").forward(request, response);
 
         } catch (SQLException ex) {
             Logger.getLogger(Auxiliarr.class.getName()).log(Level.SEVERE, null, ex);
         }
 
     }
+
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-       try {
-           int id_auxiliar =Integer.parseInt(request.getParameter("idAuxiliar"));
-           String nombre = (String)request.getParameter("nombre");
-           String apellido = (String)request.getParameter("apellido");
-           String fecha_entrada = (String)request.getParameter("fechaE");
-           String turno = (String)request.getParameter("turno");
-           int id_supervisor = Integer.parseInt(request.getParameter("idSupervisor"));
-           
-
+        try {
+            int id_auxiliar = Integer.parseInt(request.getParameter("idAuxiliar"));
+            String nombre = (String) request.getParameter("nombre");
+            String apellido = (String) request.getParameter("apellido");
+            String fecha_entrada = (String) request.getParameter("fechaE");
+            String turno = (String) request.getParameter("turno");
+            int id_supervisor = Integer.parseInt(request.getParameter("idSupervisor"));
 
             AuxiliarDAO dao = new AuxiliarDAO();
             Auxiliar tab = new Auxiliar(id_auxiliar, nombre, apellido, fecha_entrada, turno, id_supervisor);
             dao.addAuxiliar(tab);
-            
-           
-            
+
             response.sendRedirect("Auxiliarr");
-            
+
         } catch (SQLException ex) {
             Logger.getLogger(Auxiliarr.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -106,6 +103,5 @@ public class Auxiliarr extends HttpServlet {
     public String getServletInfo() {
         return "Short description";
     }// </editor-fold>
-
 
 }

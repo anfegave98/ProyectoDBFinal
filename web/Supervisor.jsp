@@ -56,7 +56,7 @@
                     <a class="navbar-brand" href="index.jsp">Laboratorio</a>
                 </div>
                 <div class="collapse navbar-collapse" id="myNavbar">
-                   <ul class="nav navbar-nav">
+                    <ul class="nav navbar-nav">
                         <li><a href="index.jsp">Inicio</a></li>
                         <li><a href="Prestamos.jsp">Prestamos</a></li>
                         <li><a href="Activoo">Activos</a></li>
@@ -92,27 +92,27 @@
 
                             </tr>
                             <% if (request.getAttribute("listaSupervisores") != null) {
-                                ArrayList<Supervisor> list = (ArrayList<Supervisor>) request.getAttribute("listaSupervisores");
-                                if (list != null)
-                                    for (Supervisor aux : list) {
+                                    ArrayList<Supervisor> list = (ArrayList<Supervisor>) request.getAttribute("listaSupervisores");
+                                    if (list != null)
+                                        for (Supervisor aux : list) {
 
 
-                        %>
-                        <tr>
-                            <td><%=aux.getId()%></td>
-                            <td><%=aux.getNombre()%></td>
-                            <td><%=aux.getApellido()%></td>
-                            <td><%=aux.getFechaEntrada()%></td>
-                        
-  
-                            
-                            <td>
-                                <button onclick="window.location.href = 'EditarSupervisores?id_supervisor=<%=aux.getId()%>&nombre=<%=aux.getNombre()%>&apellido=<%=aux.getApellido()%>&fechaEntrada=<%=aux.getFechaEntrada()%>'" class="btn btn-info">Editar</button>
-                            </td>
-                        </tr>
-                        <% }
-                            }
-                        %>
+                            %>
+                            <tr>
+                                <td><%=aux.getId()%></td>
+                                <td><%=aux.getNombre()%></td>
+                                <td><%=aux.getApellido()%></td>
+                                <td><%=aux.getFechaEntrada()%></td>
+
+
+
+                                <td>
+                                    <button onclick="window.location.href = 'EditarSupervisores?id_supervisor=<%=aux.getId()%>&nombre=<%=aux.getNombre()%>&apellido=<%=aux.getApellido()%>&fechaEntrada=<%=aux.getFechaEntrada()%>'" class="btn btn-info">Editar</button>
+                                </td>
+                            </tr>
+                            <% }
+                                }
+                            %>
                         </table>
                     </div>
                     <hr>

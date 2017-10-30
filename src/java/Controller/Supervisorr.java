@@ -42,7 +42,7 @@ public class Supervisorr extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet Supervisorr</title>");            
+            out.println("<title>Servlet Supervisorr</title>");
             out.println("</head>");
             out.println("<body>");
             out.println("<h1>Servlet Supervisorr at " + request.getContextPath() + "</h1>");
@@ -63,45 +63,38 @@ public class Supervisorr extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-       
-        
+
         try {
             SupervisorDAO obj = new SupervisorDAO();
-            
+
             ArrayList<Supervisor> lista = (ArrayList<Supervisor>) obj.getAllSupervisor();
-            
+
             request.setAttribute("listaSupervisores", lista);
-            
-           request.getRequestDispatcher("Supervisor.jsp").forward(request, response);
+
+            request.getRequestDispatcher("Supervisor.jsp").forward(request, response);
 
         } catch (SQLException ex) {
             Logger.getLogger(Supervisorr.class.getName()).log(Level.SEVERE, null, ex);
-        } 
+        }
     }
 
- 
-     
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-       
-        
-          try {
-           int id_supervisor =Integer.parseInt(request.getParameter("idSupervisor"));
-           String nombre = (String)request.getParameter("nombre");
-           String apellido = (String)request.getParameter("apellido");
-           String fechaEntrada = (String)request.getParameter("fechaE");
-          
 
+        try {
+            int id_supervisor = Integer.parseInt(request.getParameter("idSupervisor"));
+            String nombre = (String) request.getParameter("nombre");
+            String apellido = (String) request.getParameter("apellido");
+            String fechaEntrada = (String) request.getParameter("fechaE");
 
             SupervisorDAO dao = new SupervisorDAO();
             Supervisor tab = new Supervisor(id_supervisor, nombre, apellido, fechaEntrada);
-            
+
             dao.addSupervisor(tab);
-           
-            
+
             response.sendRedirect("Supervisorr");
-            
+
         } catch (SQLException ex) {
             Logger.getLogger(Supervisorr.class.getName()).log(Level.SEVERE, null, ex);
         }

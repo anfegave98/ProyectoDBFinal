@@ -41,7 +41,7 @@ public class BuscarSolicitantes extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet BuscarSolicitantes</title>");            
+            out.println("<title>Servlet BuscarSolicitantes</title>");
             out.println("</head>");
             out.println("<body>");
             out.println("<h1>Servlet BuscarSolicitantes at " + request.getContextPath() + "</h1>");
@@ -62,21 +62,20 @@ public class BuscarSolicitantes extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
-        
+
         try {
             SolicitanteDAO obj = new SolicitanteDAO();
-             int id=Integer.parseInt(request.getParameter("idSolicitante"));
-            ArrayList<Solicitante> lista = (ArrayList<Solicitante>)obj.getSolicitanteID(id);
-            
+            int id = Integer.parseInt(request.getParameter("idSolicitante"));
+            ArrayList<Solicitante> lista = (ArrayList<Solicitante>) obj.getSolicitanteID(id);
+
             request.setAttribute("listaSolicitanteBusqueda", lista);
-            
-           request.getRequestDispatcher("BuscarSolicitante.jsp").forward(request, response);
+
+            request.getRequestDispatcher("BuscarSolicitante.jsp").forward(request, response);
 
         } catch (SQLException ex) {
             Logger.getLogger(BuscarSolicitantes.class.getName()).log(Level.SEVERE, null, ex);
-        } 
-        
+        }
+
     }
 
     /**
@@ -90,7 +89,7 @@ public class BuscarSolicitantes extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
+
     }
 
     /**

@@ -92,29 +92,29 @@
                                 <th>Tipo</th>
 
                             </tr>
-                             <% if (request.getAttribute("listaSolicitantess") != null) {
-                                ArrayList<Solicitante> list = (ArrayList<Solicitante>) request.getAttribute("listaSolicitantess");
-                                if (list != null)
-                                    for (Solicitante aux : list) {
+                            <% if (request.getAttribute("listaSolicitantess") != null) {
+                                    ArrayList<Solicitante> list = (ArrayList<Solicitante>) request.getAttribute("listaSolicitantess");
+                                    if (list != null)
+                                        for (Solicitante aux : list) {
 
 
-                        %>
-                        <tr>
-                            <td><%=aux.getId()%></td>
-                            <td><%=aux.getNombre()%></td>
-                            <td><%=aux.getApellido()%></td>
-                            <td><%=aux.getEscuela()%></td>
-                            <td><%=aux.getTipo()%></td>
-                         
-  
-                            
-                            <td>
-                                <button onclick="window.location.href = 'EditarSolicitantes?id=<%=aux.getId()%>'" class="btn btn-info">Editar</button>
-                            </td>
-                        </tr>
-                        <% }
-                            }
-                        %>
+                            %>
+                            <tr>
+                                <td><%=aux.getId()%></td>
+                                <td><%=aux.getNombre()%></td>
+                                <td><%=aux.getApellido()%></td>
+                                <td><%=aux.getEscuela()%></td>
+                                <td><%=aux.getTipo()%></td>
+
+
+
+                                <td>
+                                    <button onclick="window.location.href = 'EditarSolicitantes?id_solicitante=<%=aux.getId()%>&nombre=<%=aux.getNombre()%>&apellido=<%=aux.getApellido()%>&escuela=<%=aux.getEscuela()%>&tipo=<%=aux.getTipo()%>'" class="btn btn-info">Editar</button>
+                                </td>
+                            </tr>
+                            <% }
+                                }
+                            %>
                         </table>
                     </div>
                     <hr>

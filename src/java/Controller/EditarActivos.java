@@ -62,8 +62,8 @@ public class EditarActivos extends HttpServlet {
             throws ServletException, IOException {
         try {
             ActivoDAO dao = new ActivoDAO();
-            
-            int id_activo =Integer.parseInt(request.getParameter("id_activo"));       
+
+            int id_activo = Integer.parseInt(request.getParameter("id_activo"));
             String tipo = request.getParameter("tipo");
             String fabricante = request.getParameter("fabricante");
             String fecha_compra = request.getParameter("fecha_compra");
@@ -71,10 +71,8 @@ public class EditarActivos extends HttpServlet {
             String estado = request.getParameter("estado");
             String prestado = request.getParameter("prestado");
             //String calificacion = request.getParameter("calificacion");
-            int calificacion =Integer.parseInt(request.getParameter("calificacion"));
-           
-           
-           
+            int calificacion = Integer.parseInt(request.getParameter("calificacion"));
+
             request.setAttribute("id_activo", id_activo);
             request.setAttribute("tipo", tipo);
             request.setAttribute("fabricante", fabricante);
@@ -85,7 +83,6 @@ public class EditarActivos extends HttpServlet {
             request.setAttribute("calificacion", calificacion);
 
             request.getRequestDispatcher("EditarActivo.jsp").forward(request, response);
-
 
         } catch (SQLException ex) {
             Logger.getLogger(EditarActivos.class.getName()).log(Level.SEVERE, null, ex);

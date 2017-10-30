@@ -20,13 +20,14 @@ import java.util.List;
  * @author Labin
  */
 public class SupervisorDAO {
+
     private Connection connection;
 
     public SupervisorDAO() throws SQLException {
         connection = DbUtil.getConnection();
     }
-    
-      public boolean addSupervisor(Supervisor supervisor) throws SQLException {
+
+    public boolean addSupervisor(Supervisor supervisor) throws SQLException {
         boolean result = false;
         Connection connection = DbUtil.getConnection();
         String query = "insert into supervisor (supervisor.id_supervisor,supervisor.nombre_supervisor,supervisor.apellido_supervisor,supervisor.fecha_entrada) values (?, ?, ?, ? );";
@@ -43,8 +44,8 @@ public class SupervisorDAO {
         }
         return result;
     }
-      
-       public boolean deleteSupervidor(int a) throws SQLException {
+
+    public boolean deleteSupervidor(int a) throws SQLException {
         boolean result = false;
         Connection connection = DbUtil.getConnection();
         String query = "delete from supervisor where id_supervisor = ?";
@@ -59,8 +60,8 @@ public class SupervisorDAO {
 
         return result;
     }
-       
-        public ArrayList<Supervisor> getAllSupervisor() throws SQLException {
+
+    public ArrayList<Supervisor> getAllSupervisor() throws SQLException {
         ArrayList<Supervisor> supervisor = null;
         boolean result = false;
         String query = "SELECT * FROM supervisor";
@@ -79,13 +80,13 @@ public class SupervisorDAO {
                 if (supervisor == null) {
                     supervisor = new ArrayList<Supervisor>();
                 }
-                Supervisor registro = new Supervisor(id,nombre,apellido, fecha_Entrada);
+                Supervisor registro = new Supervisor(id, nombre, apellido, fecha_Entrada);
                 id = rs.getInt("id_supervisor");
                 registro.setId(id);
 
                 nombre = rs.getString("nombre_supervisor");
                 registro.setNombre(nombre);
-                
+
                 apellido = rs.getString("apellido_supervisor");
                 registro.setApellido(apellido);
 
@@ -110,11 +111,11 @@ public class SupervisorDAO {
         return supervisor;
 
     }
-        
-        public ArrayList<Supervisor> getSupervisorID(int a) throws SQLException {
+
+    public ArrayList<Supervisor> getSupervisorID(int a) throws SQLException {
         ArrayList<Supervisor> supervisor = null;
         boolean result = false;
-        String query = "SELECT * FROM supervisor where id_supervisor = "+a;
+        String query = "SELECT * FROM supervisor where id_supervisor = " + a;
         Connection connection = DbUtil.getConnection();
         try {
 
@@ -130,13 +131,13 @@ public class SupervisorDAO {
                 if (supervisor == null) {
                     supervisor = new ArrayList<Supervisor>();
                 }
-                Supervisor registro = new Supervisor(id,nombre,apellido, fecha_Entrada);
+                Supervisor registro = new Supervisor(id, nombre, apellido, fecha_Entrada);
                 id = rs.getInt("id_supervisor");
                 registro.setId(id);
 
                 nombre = rs.getString("nombre_supervisor");
                 registro.setNombre(nombre);
-                
+
                 apellido = rs.getString("apellido_supervisor");
                 registro.setApellido(apellido);
 
@@ -161,22 +162,19 @@ public class SupervisorDAO {
         return supervisor;
 
     }
-        
-         public boolean updateSupervisor(int a, String nombre, String apellido, String fechaEntrada) throws SQLException {
+
+    public boolean updateSupervisor(int a, String nombre, String apellido, String fechaEntrada) throws SQLException {
         boolean result = false;
         Connection connection = DbUtil.getConnection();
-        String query = "update supervisor set nombre_supervisor = ?, apellido_supervisor = ?, fecha_entrada = ? where id_supervisor = "+a;
+        String query = "update supervisor set nombre_supervisor = ?, apellido_supervisor = ?, fecha_entrada = ? where id_supervisor = " + a;
         PreparedStatement preparedStmt = null;
-           
-         
+
         try {
             preparedStmt = connection.prepareStatement(query);
             preparedStmt.setString(1, nombre);
             preparedStmt.setString(2, apellido);
             preparedStmt.setString(3, fechaEntrada);
-            
-      
-            
+
             if (preparedStmt.executeUpdate() > 0) {
                 result = true;
             }
@@ -187,9 +185,5 @@ public class SupervisorDAO {
 
         return result;
     }
-    
 
-       
-    
-    
 }

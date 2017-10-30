@@ -20,14 +20,14 @@ import java.util.List;
  * @author Labin
  */
 public class SolicitanteDAO {
-    
+
     private Connection connection;
 
     public SolicitanteDAO() throws SQLException {
         connection = DbUtil.getConnection();
     }
-    
-     public boolean addSolicitante(Solicitante solicitante) throws SQLException {
+
+    public boolean addSolicitante(Solicitante solicitante) throws SQLException {
         boolean result = false;
         Connection connection = DbUtil.getConnection();
         String query = "insert into solicitante (solicitante.id_solicitante,solicitante.nombre_solicitante,solicitante.apellido_solicitante,solicitante.escuela,solicitante.tipo) values (?,?,?,?,?);";
@@ -61,7 +61,7 @@ public class SolicitanteDAO {
 
         return result;
     }
-    
+
     public ArrayList<Solicitante> getAllSolicitante() throws SQLException {
         ArrayList<Solicitante> solicitante = null;
         boolean result = false;
@@ -72,11 +72,11 @@ public class SolicitanteDAO {
             Statement st = connection.createStatement();
             ResultSet rs = st.executeQuery(query);
 
-           int id = 0;
-           String nombre = null; 
-           String apellido = null;
-           String escuela = null;
-           String tipo = null;
+            int id = 0;
+            String nombre = null;
+            String apellido = null;
+            String escuela = null;
+            String tipo = null;
 
             while (rs.next()) {
                 if (solicitante == null) {
@@ -88,23 +88,22 @@ public class SolicitanteDAO {
 
                 nombre = rs.getString("nombre_solicitante");
                 registro.setNombre(nombre);
-                
+
                 apellido = rs.getString("apellido_solicitante");
                 registro.setApellido(apellido);
 
-                
                 escuela = rs.getString("escuela");
                 registro.setEscuela(escuela);
-                
+
                 tipo = rs.getString("tipo");
                 registro.setTipo(tipo);
-                
+
                 solicitante.add(registro);
 
             }
             if (solicitante != null) {
                 for (int i = 0; i < solicitante.size(); i++) {
-                    System.out.println(solicitante.get(i).getId() + " " + solicitante.get(i).getNombre()+ " " + solicitante.get(i).getApellido()+" " + solicitante.get(i).getEscuela()+ " " + solicitante.get(i).getTipo());
+                    System.out.println(solicitante.get(i).getId() + " " + solicitante.get(i).getNombre() + " " + solicitante.get(i).getApellido() + " " + solicitante.get(i).getEscuela() + " " + solicitante.get(i).getTipo());
                 }
             }
             st.close();
@@ -117,23 +116,22 @@ public class SolicitanteDAO {
         return solicitante;
 
     }
-    
-    
+
     public ArrayList<Solicitante> getSolicitanteID(int a) throws SQLException {
         ArrayList<Solicitante> solicitante = null;
         boolean result = false;
-        String query = "SELECT * FROM solicitante where id_solicitante ="+a;
+        String query = "SELECT * FROM solicitante where id_solicitante =" + a;
         Connection connection = DbUtil.getConnection();
         try {
 
             Statement st = connection.createStatement();
             ResultSet rs = st.executeQuery(query);
 
-           int id = 0;
-           String nombre = null; 
-           String apellido = null;
-           String escuela = null;
-           String tipo = null;
+            int id = 0;
+            String nombre = null;
+            String apellido = null;
+            String escuela = null;
+            String tipo = null;
 
             while (rs.next()) {
                 if (solicitante == null) {
@@ -145,23 +143,22 @@ public class SolicitanteDAO {
 
                 nombre = rs.getString("nombre_solicitante");
                 registro.setNombre(nombre);
-                
+
                 apellido = rs.getString("apellido_solicitante");
                 registro.setApellido(apellido);
 
-                
                 escuela = rs.getString("escuela");
                 registro.setEscuela(escuela);
-                
+
                 tipo = rs.getString("tipo");
                 registro.setTipo(tipo);
-                
+
                 solicitante.add(registro);
 
             }
             if (solicitante != null) {
                 for (int i = 0; i < solicitante.size(); i++) {
-                    System.out.println(solicitante.get(i).getId() + " " + solicitante.get(i).getNombre()+ " " + solicitante.get(i).getApellido()+" " + solicitante.get(i).getEscuela()+ " " + solicitante.get(i).getTipo());
+                    System.out.println(solicitante.get(i).getId() + " " + solicitante.get(i).getNombre() + " " + solicitante.get(i).getApellido() + " " + solicitante.get(i).getEscuela() + " " + solicitante.get(i).getTipo());
                 }
             }
             st.close();
@@ -174,22 +171,20 @@ public class SolicitanteDAO {
         return solicitante;
 
     }
-    
-     public boolean updateSolicitante(int a, String nombre, String apellido, String escuela,String tipo) throws SQLException {
+
+    public boolean updateSolicitante(int a, String nombre, String apellido, String escuela, String tipo) throws SQLException {
         boolean result = false;
         Connection connection = DbUtil.getConnection();
-        String query = "update solicitante set nombre_solicitante = ?, apellido_solicitante = ?, escuela = ?, tipo = ? where id_solicitante = "+a;
+        String query = "update solicitante set nombre_solicitante = ?, apellido_solicitante = ?, escuela = ?, tipo = ? where id_solicitante = " + a;
         PreparedStatement preparedStmt = null;
-        
-         
+
         try {
             preparedStmt = connection.prepareStatement(query);
             preparedStmt.setString(1, nombre);
             preparedStmt.setString(2, apellido);
             preparedStmt.setString(3, escuela);
             preparedStmt.setString(4, tipo);
-      
-            
+
             if (preparedStmt.executeUpdate() > 0) {
                 result = true;
             }
@@ -201,5 +196,4 @@ public class SolicitanteDAO {
         return result;
     }
 
-    
 }

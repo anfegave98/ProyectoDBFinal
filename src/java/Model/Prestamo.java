@@ -1,4 +1,3 @@
-
 package Model;
 
 import java.util.ArrayList;
@@ -8,6 +7,7 @@ import java.util.ArrayList;
  * @author anfeg
  */
 public class Prestamo {
+
     private int id_prestamo;
     private int id_solicitante;
     private int id_trabajador;
@@ -82,7 +82,4 @@ public class Prestamo {
         this.fechaSalida = fechaSalida;
     }
 
-   
-    
-    
 }

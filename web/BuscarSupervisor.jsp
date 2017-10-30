@@ -103,23 +103,23 @@
 
                             </tr>
                             <% if (request.getAttribute("listaSupervisoresBusqueda") != null) {
-                                ArrayList<Supervisor> list = (ArrayList<Supervisor>) request.getAttribute("listaSupervisoresBusqueda");
-                                if (list != null)
-                                    for (Supervisor aux : list) {
+                                    ArrayList<Supervisor> list = (ArrayList<Supervisor>) request.getAttribute("listaSupervisoresBusqueda");
+                                    if (list != null)
+                                        for (Supervisor aux : list) {
 
 
-                        %>
-                        <tr>
-                           <td><%=aux.getId()%></td>
-                            <td><%=aux.getNombre()%></td>
-                            <td><%=aux.getApellido()%></td>
-                            <td><%=aux.getFechaEntrada()%></td>
-                        
-                            
-                        </tr>
-                        <% }
-                            }
-                        %>
+                            %>
+                            <tr>
+                                <td><%=aux.getId()%></td>
+                                <td><%=aux.getNombre()%></td>
+                                <td><%=aux.getApellido()%></td>
+                                <td><%=aux.getFechaEntrada()%></td>
+
+
+                            </tr>
+                            <% }
+                                }
+                            %>
                         </table>
                     </div>
                 </div>

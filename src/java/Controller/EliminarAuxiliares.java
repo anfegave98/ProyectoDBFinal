@@ -44,7 +44,7 @@ public class EliminarAuxiliares extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet EliminarAuxiliares</title>");            
+            out.println("<title>Servlet EliminarAuxiliares</title>");
             out.println("</head>");
             out.println("<body>");
             out.println("<h1>Servlet EliminarAuxiliares at " + request.getContextPath() + "</h1>");
@@ -62,21 +62,21 @@ public class EliminarAuxiliares extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
-   @Override
+    @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        ArrayList<Auxiliar> auxiliares=new ArrayList<>();
+        ArrayList<Auxiliar> auxiliares = new ArrayList<>();
         try {
-            AuxiliarDAO a=new AuxiliarDAO();
-            auxiliares=a.getAllAuxiliar();
+            AuxiliarDAO a = new AuxiliarDAO();
+            auxiliares = a.getAllAuxiliar();
             request.setAttribute("auxiliares", auxiliares);
-            RequestDispatcher rd = getServletContext().getRequestDispatcher("/EliminarAuxiliar.jsp"); 
-             rd.forward(request, response); 
+            RequestDispatcher rd = getServletContext().getRequestDispatcher("/EliminarAuxiliar.jsp");
+            rd.forward(request, response);
 
         } catch (SQLException ex) {
             Logger.getLogger(EliminarAuxiliares.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
+
     }
 
     /**
@@ -90,14 +90,14 @@ public class EliminarAuxiliares extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        int idA=Integer.parseInt(request.getParameter("eliminarAuxiliar"));
+        int idA = Integer.parseInt(request.getParameter("eliminarAuxiliar"));
         try {
-            AuxiliarDAO a=new AuxiliarDAO();
+            AuxiliarDAO a = new AuxiliarDAO();
             a.deleteAuxiliar(idA);
         } catch (SQLException ex) {
             Logger.getLogger(EliminarAuxiliares.class.getName()).log(Level.SEVERE, null, ex);
         }
-    
+
         response.sendRedirect("Auxiliarr");
     }
 

@@ -10,6 +10,7 @@ package Model;
  * @author anfeg
  */
 public class Activo {
+
     private int id_activo;
     private String tipo;
     private String fabricante;
@@ -30,7 +31,6 @@ public class Activo {
         this.calificacion = calificacion;
     }
 
-    
     public int getId_activo() {
         return id_activo;
     }
@@ -94,10 +94,5 @@ public class Activo {
     public void setCalificacion(int calificacion) {
         this.calificacion = calificacion;
     }
-    
-    
 
-   
-    
-    
 }

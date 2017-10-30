@@ -83,16 +83,16 @@
                             <div class="form-group">
                                 <label for="idusuario">ID Supervisor:</label>
                                 <select  class="form-control" name="eliminarSupervisor">
-                                                        <% 
-                                 if (request.getAttribute("supervisores") != null) { 
-                                    ArrayList<Supervisor> array = (ArrayList<Supervisor>) request.getAttribute("supervisores"); 
-                                     for (Supervisor a : array) {      
-                             %> 
-                             <option value="<%=a.getId()%>"><%=a.getId()%></option> 
-                             <%      } 
-                                 } 
-                             %> 
-                         </select> 
+                                    <%
+                                        if (request.getAttribute("supervisores") != null) {
+                                            ArrayList<Supervisor> array = (ArrayList<Supervisor>) request.getAttribute("supervisores");
+                                            for (Supervisor a : array) {
+                                    %> 
+                                    <option value="<%=a.getId()%>"><%=a.getId()%></option> 
+                                    <%      }
+                                        }
+                                    %> 
+                                </select> 
                             </div>
 
                             <br>

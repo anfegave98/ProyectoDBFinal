@@ -42,7 +42,7 @@ public class EliminarActivos extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet EliminarActivo</title>");            
+            out.println("<title>Servlet EliminarActivo</title>");
             out.println("</head>");
             out.println("<body>");
             out.println("<h1>Servlet EliminarActivo at " + request.getContextPath() + "</h1>");
@@ -63,18 +63,18 @@ public class EliminarActivos extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        ArrayList<Activo> activos=new ArrayList<>();
+        ArrayList<Activo> activos = new ArrayList<>();
         try {
-            ActivoDAO a=new ActivoDAO();
-            activos=a.getAllActivo();
+            ActivoDAO a = new ActivoDAO();
+            activos = a.getAllActivo();
             request.setAttribute("activos", activos);
-            RequestDispatcher rd = getServletContext().getRequestDispatcher("/EliminarActivo.jsp"); 
-             rd.forward(request, response); 
+            RequestDispatcher rd = getServletContext().getRequestDispatcher("/EliminarActivo.jsp");
+            rd.forward(request, response);
 
         } catch (SQLException ex) {
             Logger.getLogger(EliminarActivos.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
+
     }
 
     /**
@@ -88,14 +88,14 @@ public class EliminarActivos extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        int idA=Integer.parseInt(request.getParameter("eliminarActivo"));
+        int idA = Integer.parseInt(request.getParameter("eliminarActivo"));
         try {
-            ActivoDAO a=new ActivoDAO();
+            ActivoDAO a = new ActivoDAO();
             a.deleteActivo(idA);
         } catch (SQLException ex) {
             Logger.getLogger(EliminarActivos.class.getName()).log(Level.SEVERE, null, ex);
         }
-    
+
         response.sendRedirect("Activoo");
     }
 

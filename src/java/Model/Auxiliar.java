@@ -10,13 +10,14 @@ package Model;
  * @author anfeg
  */
 public class Auxiliar extends Trabajador {
+
     private String turno;
     private int id_supervisor;
 
     public Auxiliar(int id, String nombre, String apellido, String fechaEntrada, String turno, int id_supervisor) {
         super(id, nombre, apellido, fechaEntrada);
-        this.turno=turno;
-        this.id_supervisor=id_supervisor;
+        this.turno = turno;
+        this.id_supervisor = id_supervisor;
     }
 
     public String getTurno() {
@@ -35,10 +36,4 @@ public class Auxiliar extends Trabajador {
         this.id_supervisor = id_supervisor;
     }
 
-  
-
- 
-
-   
-    
 }

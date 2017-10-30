@@ -93,28 +93,28 @@
                                 <th>ID Supervisor</th>
                             </tr>
                             <% if (request.getAttribute("listaAuxiliares") != null) {
-                                ArrayList<Auxiliar> list = (ArrayList<Auxiliar>) request.getAttribute("listaAuxiliares");
-                                if (list != null)
-                                    for (Auxiliar aux : list) {
+                                    ArrayList<Auxiliar> list = (ArrayList<Auxiliar>) request.getAttribute("listaAuxiliares");
+                                    if (list != null)
+                                        for (Auxiliar aux : list) {
 
 
-                        %>
-                        <tr>
-                            <td><%=aux.getId()%></td>
-                            <td><%=aux.getNombre()%></td>
-                            <td><%=aux.getApellido()%></td>
-                            <td><%=aux.getFechaEntrada()%></td>
-                            <td><%=aux.getTurno()%></td>
-                            <td><%=aux.getId_supervisor()%></td>
-  
-                            
-                            <td>
-                                <button onclick="window.location.href = 'EditarAuxiliares?id_auxiliar=<%=aux.getId()%>&nombre=<%=aux.getNombre()%>&apellido=<%=aux.getApellido()%>&fechaEntrada=<%=aux.getFechaEntrada()%>&turno=<%=aux.getTurno()%>&id_supervisor=<%=aux.getId_supervisor()%>'" class="btn btn-info">Editar</button>
-                            </td>
-                        </tr>
-                        <% }
-                            }
-                        %>
+                            %>
+                            <tr>
+                                <td><%=aux.getId()%></td>
+                                <td><%=aux.getNombre()%></td>
+                                <td><%=aux.getApellido()%></td>
+                                <td><%=aux.getFechaEntrada()%></td>
+                                <td><%=aux.getTurno()%></td>
+                                <td><%=aux.getId_supervisor()%></td>
+
+
+                                <td>
+                                    <button onclick="window.location.href = 'EditarAuxiliares?id_auxiliar=<%=aux.getId()%>&nombre=<%=aux.getNombre()%>&apellido=<%=aux.getApellido()%>&fechaEntrada=<%=aux.getFechaEntrada()%>&turno=<%=aux.getTurno()%>&id_supervisor=<%=aux.getId_supervisor()%>'" class="btn btn-info">Editar</button>
+                                </td>
+                            </tr>
+                            <% }
+                                }
+                            %>
                         </table>
                     </div>
                     <hr>

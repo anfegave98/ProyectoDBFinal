@@ -9,15 +9,15 @@ package Model;
  *
  * @author Labin
  */
-public class Solicitante extends Persona{
-    
+public class Solicitante extends Persona {
+
     private String escuela;
     private String tipo;
-    
-    public Solicitante(int id, String nombre, String apellido,String escuela,String tipo ) {
+
+    public Solicitante(int id, String nombre, String apellido, String escuela, String tipo) {
         super(id, nombre, apellido);
-        this.escuela=escuela;
-        this.tipo=tipo;
+        this.escuela = escuela;
+        this.tipo = tipo;
     }
 
     public String getEscuela() {
@@ -36,8 +36,4 @@ public class Solicitante extends Persona{
         this.tipo = tipo;
     }
 
-    
-    
-    
-    
 }

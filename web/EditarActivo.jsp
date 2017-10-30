@@ -77,17 +77,17 @@
                     <p></p>
                     <hr>
                     <div class="container">   
-                          <%
-            int id_activo=(Integer) request.getAttribute("id_activo");
-            String tipo= (String)request.getAttribute("tipo");
-            String fabricante= (String)request.getAttribute("fabricante");
-            String fecha_compra= (String)request.getAttribute("fecha_compra");
-            String ultimo_mantenimiento= (String)request.getAttribute("ultimo_mantenimiento");
-            String estado= (String)request.getAttribute("estado");
-            String prestado= (String)request.getAttribute("prestado");
-            int calificacion=(Integer) request.getAttribute("calificacion");
+                        <%
+                            int id_activo = (Integer) request.getAttribute("id_activo");
+                            String tipo = (String) request.getAttribute("tipo");
+                            String fabricante = (String) request.getAttribute("fabricante");
+                            String fecha_compra = (String) request.getAttribute("fecha_compra");
+                            String ultimo_mantenimiento = (String) request.getAttribute("ultimo_mantenimiento");
+                            String estado = (String) request.getAttribute("estado");
+                            String prestado = (String) request.getAttribute("prestado");
+                            int calificacion = (Integer) request.getAttribute("calificacion");
 
-            %>
+                        %>
                         <form class="form-inline" action="EditarActivos" method="POST">
                             <div class="form-group">
                                 <label for="idequipo">ID Activo:</label>

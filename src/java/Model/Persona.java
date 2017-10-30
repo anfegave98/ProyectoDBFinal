@@ -10,6 +10,7 @@ package Model;
  * @author Labin
  */
 public abstract class Persona {
+
     protected int id;
     protected String nombre;
     protected String apellido;
@@ -23,8 +24,6 @@ public abstract class Persona {
     public Persona() {
     }
 
-        
-    
     public int getId() {
         return id;
     }
@@ -48,9 +47,5 @@ public abstract class Persona {
     public void setApellido(String apellido) {
         this.apellido = apellido;
     }
-    
-    
 
-  
-    
 }

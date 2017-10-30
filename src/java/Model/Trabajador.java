@@ -10,9 +10,10 @@ package Model;
  * @author Labin
  */
 public abstract class Trabajador extends Persona {
-    
+
     protected String fechaEntrada;
-    public Trabajador(int id, String nombre, String apellido,String fechaEntrada) {
+
+    public Trabajador(int id, String nombre, String apellido, String fechaEntrada) {
         super(id, nombre, apellido);
         this.fechaEntrada = fechaEntrada;
     }
@@ -20,7 +21,6 @@ public abstract class Trabajador extends Persona {
     public Trabajador() {
         super();
     }
-    
 
     public String getFechaEntrada() {
         return fechaEntrada;
@@ -30,9 +30,4 @@ public abstract class Trabajador extends Persona {
         this.fechaEntrada = fechaEntrada;
     }
 
-    
-
-  
-    
-    
 }

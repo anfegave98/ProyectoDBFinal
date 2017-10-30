@@ -41,7 +41,7 @@ public class Activoo extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet AñadirActivos</title>");            
+            out.println("<title>Servlet AñadirActivos</title>");
             out.println("</head>");
             out.println("<body>");
             out.println("<h1>Servlet AñadirActivos at " + request.getContextPath() + "</h1>");
@@ -62,42 +62,41 @@ public class Activoo extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-         try {
+        try {
             ActivoDAO obj = new ActivoDAO();
-            
+
             ArrayList<Activo> lista = (ArrayList<Activo>) obj.getAllActivo();
-            
+
             request.setAttribute("listaActivos", lista);
-            
-           request.getRequestDispatcher("Activos.jsp").forward(request, response);
+
+            request.getRequestDispatcher("Activos.jsp").forward(request, response);
 
         } catch (SQLException ex) {
             Logger.getLogger(Activoo.class.getName()).log(Level.SEVERE, null, ex);
         }
 
     }
+
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-       try {
-           int id_activo =Integer.parseInt(request.getParameter("idActivo"));
-           String tipo = (String)request.getParameter("tipo");
-           String fabricante = (String)request.getParameter("fabricante");
-           String fecha_compra = (String)request.getParameter("fechaC");
-           String mantenimiento = (String)request.getParameter("mantenimiento");
-           String estado = (String)request.getParameter("estado");
-           String prestado = (String)request.getParameter("prestado");
-           int calificacion =Integer.parseInt(request.getParameter("calificacion"));
-
+        try {
+            int id_activo = Integer.parseInt(request.getParameter("idActivo"));
+            String tipo = (String) request.getParameter("tipo");
+            String fabricante = (String) request.getParameter("fabricante");
+            String fecha_compra = (String) request.getParameter("fechaC");
+            String mantenimiento = (String) request.getParameter("mantenimiento");
+            String estado = (String) request.getParameter("estado");
+            String prestado = (String) request.getParameter("prestado");
+            int calificacion = Integer.parseInt(request.getParameter("calificacion"));
 
             ActivoDAO dao = new ActivoDAO();
             Activo tab = new Activo(id_activo, tipo, fabricante, fecha_compra, mantenimiento, estado, prestado, calificacion);
-            
+
             dao.addActivo(tab);
-           
-            
+
             response.sendRedirect("Activoo");
-            
+
         } catch (SQLException ex) {
             Logger.getLogger(Activoo.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -107,6 +106,5 @@ public class Activoo extends HttpServlet {
     public String getServletInfo() {
         return "Short description";
     }// </editor-fold>
-
 
 }

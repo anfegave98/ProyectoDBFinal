@@ -43,7 +43,7 @@ public class BuscarAuxiliares extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet BuscarAuxiliares</title>");            
+            out.println("<title>Servlet BuscarAuxiliares</title>");
             out.println("</head>");
             out.println("<body>");
             out.println("<h1>Servlet BuscarAuxiliares at " + request.getContextPath() + "</h1>");
@@ -61,17 +61,17 @@ public class BuscarAuxiliares extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
-     @Override
+    @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-         try {
+        try {
             AuxiliarDAO obj = new AuxiliarDAO();
-             int id=Integer.parseInt(request.getParameter("idAuxiliar"));
-            ArrayList<Auxiliar> lista = (ArrayList<Auxiliar>)obj.getAuxiliarID(id);
-            
+            int id = Integer.parseInt(request.getParameter("idAuxiliar"));
+            ArrayList<Auxiliar> lista = (ArrayList<Auxiliar>) obj.getAuxiliarID(id);
+
             request.setAttribute("listaAuxiliarBusqueda", lista);
-            
-           request.getRequestDispatcher("BuscarAuxiliar.jsp").forward(request, response);
+
+            request.getRequestDispatcher("BuscarAuxiliar.jsp").forward(request, response);
 
         } catch (SQLException ex) {
             Logger.getLogger(BuscarAuxiliares.class.getName()).log(Level.SEVERE, null, ex);
@@ -101,6 +101,5 @@ public class BuscarAuxiliares extends HttpServlet {
     public String getServletInfo() {
         return "Short description";
     }// </editor-fold>
-
 
 }

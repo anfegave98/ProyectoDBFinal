@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <title>Añadir Auxiliar</title>
+        <title>Editar Auxiliar</title>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -73,19 +73,19 @@
 
                 </div>
                 <div class="col-sm-8 text-left"> 
-                    <h1>Añadir Auxiliar</h1>
+                    <h1>Editar Auxiliar</h1>
                     <p></p>
                     <hr>
                     <div class="container"> 
-                                      <%
-            int id_auxiliar=(Integer) request.getAttribute("id_auxiliar");
-            String nombre= (String)request.getAttribute("nombre");
-            String apellido= (String)request.getAttribute("apellido");
-            String fechaEntrada= (String)request.getAttribute("fechaEntrada");
-            String turno= (String)request.getAttribute("turno");
-            int id_supervisor=(Integer) request.getAttribute("id_supervisor");
+                        <%
+                            int id_auxiliar = (Integer) request.getAttribute("id_auxiliar");
+                            String nombre = (String) request.getAttribute("nombre");
+                            String apellido = (String) request.getAttribute("apellido");
+                            String fechaEntrada = (String) request.getAttribute("fechaEntrada");
+                            String turno = (String) request.getAttribute("turno");
+                            int id_supervisor = (Integer) request.getAttribute("id_supervisor");
 
-            %>
+                        %>
                         <form class="form-inline" action="EditarAuxiliares" method="POST">
                             <div class="form-group">
                                 <label for="idequipo">ID Auxiliar:</label>

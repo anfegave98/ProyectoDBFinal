@@ -42,7 +42,7 @@ public class BuscarSupervisores extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet BuscarSupervisores</title>");            
+            out.println("<title>Servlet BuscarSupervisores</title>");
             out.println("</head>");
             out.println("<body>");
             out.println("<h1>Servlet BuscarSupervisores at " + request.getContextPath() + "</h1>");
@@ -64,23 +64,22 @@ public class BuscarSupervisores extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         System.out.println("Hola1");
-        
-         try {
+
+        try {
             SupervisorDAO obj = new SupervisorDAO();
-             int id=Integer.parseInt(request.getParameter("idSupervisor"));
-             System.out.println("Hola");
-             System.out.println(id);
-            ArrayList<Supervisor> lista = (ArrayList<Supervisor>)obj.getSupervisorID(id);
-            
+            int id = Integer.parseInt(request.getParameter("idSupervisor"));
+            System.out.println("Hola");
+            System.out.println(id);
+            ArrayList<Supervisor> lista = (ArrayList<Supervisor>) obj.getSupervisorID(id);
+
             request.setAttribute("listaSupervisoresBusqueda", lista);
-            
-           request.getRequestDispatcher("BuscarSupervisor.jsp").forward(request, response);
+
+            request.getRequestDispatcher("BuscarSupervisor.jsp").forward(request, response);
 
         } catch (SQLException ex) {
             Logger.getLogger(BuscarSupervisores.class.getName()).log(Level.SEVERE, null, ex);
-        } 
-        
-        
+        }
+
     }
 
     /**
@@ -94,7 +93,7 @@ public class BuscarSupervisores extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-      
+
     }
 
     /**

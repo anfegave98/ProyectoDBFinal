@@ -21,22 +21,21 @@ import java.util.List;
  * @author Labin
  */
 public class AuxiliarDAO {
-    
-    
+
     private Connection connection;
 
     public AuxiliarDAO() throws SQLException {
         connection = DbUtil.getConnection();
     }
-    
-     public boolean addAuxiliar(Auxiliar auxiliar) throws SQLException {
+
+    public boolean addAuxiliar(Auxiliar auxiliar) throws SQLException {
         boolean result = false;
         Connection connection = DbUtil.getConnection();
         String query = "insert into auxiliar (auxiliar.id_auxiliar,auxiliar.nombre_auxiliar,auxiliar.apellido_auxiliar,auxiliar.fecha_entrada,auxiliar.turno,auxiliar.id_supervisor) values (?, ?, ?, ?, ?, ?);";
-        
+
         PreparedStatement preparedStmt = null;
         try {
-            
+
             preparedStmt = connection.prepareStatement(query);
             preparedStmt.setInt(1, auxiliar.getId());
             preparedStmt.setString(2, auxiliar.getNombre());
@@ -51,7 +50,7 @@ public class AuxiliarDAO {
         return result;
     }
 
-      public boolean deleteAuxiliar(int a) throws SQLException {
+    public boolean deleteAuxiliar(int a) throws SQLException {
         boolean result = false;
         Connection connection = DbUtil.getConnection();
         String query = "delete from auxiliar where id_auxiliar = ?";
@@ -66,8 +65,8 @@ public class AuxiliarDAO {
 
         return result;
     }
-      
-      public ArrayList<Auxiliar> getAllAuxiliar() throws SQLException {
+
+    public ArrayList<Auxiliar> getAllAuxiliar() throws SQLException {
         ArrayList<Auxiliar> auxiliar = null;
         boolean result = false;
         String query = "SELECT * FROM auxiliar";
@@ -77,12 +76,12 @@ public class AuxiliarDAO {
             Statement st = connection.createStatement();
             ResultSet rs = st.executeQuery(query);
 
-         int id=0;
-         String nombre = null;
-         String apellido = null;
-         String fechaEntrada = null;
-         String turno = null;
-         int id_supervisor = 0;
+            int id = 0;
+            String nombre = null;
+            String apellido = null;
+            String fechaEntrada = null;
+            String turno = null;
+            int id_supervisor = 0;
             while (rs.next()) {
                 if (auxiliar == null) {
                     auxiliar = new ArrayList<Auxiliar>();
@@ -94,24 +93,24 @@ public class AuxiliarDAO {
                 nombre = rs.getString("nombre_auxiliar");
                 registro.setNombre(nombre);
 
-                apellido= rs.getString("apellido_auxiliar");
+                apellido = rs.getString("apellido_auxiliar");
                 registro.setApellido(apellido);
-                
-                fechaEntrada= rs.getString("fecha_entrada");
+
+                fechaEntrada = rs.getString("fecha_entrada");
                 registro.setFechaEntrada(fechaEntrada);
-                
+
                 turno = rs.getString("turno");
                 registro.setTurno(turno);
-               
-                id_supervisor =  rs.getInt("id_supervisor");
+
+                id_supervisor = rs.getInt("id_supervisor");
                 registro.setId_supervisor(id_supervisor);
-                
+
                 auxiliar.add(registro);
 
             }
             if (auxiliar != null) {
                 for (int i = 0; i < auxiliar.size(); i++) {
-                    System.out.println(auxiliar.get(i).getId() + " " + auxiliar.get(i).getNombre() + " " + auxiliar.get(i).getApellido()+ " " + auxiliar.get(i).getFechaEntrada()+ " " + auxiliar.get(i).getId_supervisor());
+                    System.out.println(auxiliar.get(i).getId() + " " + auxiliar.get(i).getNombre() + " " + auxiliar.get(i).getApellido() + " " + auxiliar.get(i).getFechaEntrada() + " " + auxiliar.get(i).getId_supervisor());
                 }
             }
             st.close();
@@ -124,23 +123,23 @@ public class AuxiliarDAO {
         return auxiliar;
 
     }
-      
-      public ArrayList<Auxiliar> getAuxiliarID(int a) throws SQLException {
+
+    public ArrayList<Auxiliar> getAuxiliarID(int a) throws SQLException {
         ArrayList<Auxiliar> auxiliar = null;
         boolean result = false;
-        String query = "SELECT * FROM auxiliar where id_auxiliar = "+a;
+        String query = "SELECT * FROM auxiliar where id_auxiliar = " + a;
         Connection connection = DbUtil.getConnection();
         try {
 
             Statement st = connection.createStatement();
             ResultSet rs = st.executeQuery(query);
 
-         int id=0;
-         String nombre = null;
-         String apellido = null;
-         String fechaEntrada = null;
-         String turno = null;
-         int id_supervisor = 0;
+            int id = 0;
+            String nombre = null;
+            String apellido = null;
+            String fechaEntrada = null;
+            String turno = null;
+            int id_supervisor = 0;
             while (rs.next()) {
                 if (auxiliar == null) {
                     auxiliar = new ArrayList<Auxiliar>();
@@ -152,24 +151,24 @@ public class AuxiliarDAO {
                 nombre = rs.getString("nombre_auxiliar");
                 registro.setNombre(nombre);
 
-                apellido= rs.getString("apellido_auxiliar");
+                apellido = rs.getString("apellido_auxiliar");
                 registro.setApellido(apellido);
-                
-                fechaEntrada= rs.getString("fecha_entrada");
+
+                fechaEntrada = rs.getString("fecha_entrada");
                 registro.setFechaEntrada(fechaEntrada);
-                
+
                 turno = rs.getString("turno");
                 registro.setTurno(turno);
-               
-                id_supervisor =  rs.getInt("id_supervisor");
+
+                id_supervisor = rs.getInt("id_supervisor");
                 registro.setId_supervisor(id_supervisor);
-                
+
                 auxiliar.add(registro);
 
             }
             if (auxiliar != null) {
                 for (int i = 0; i < auxiliar.size(); i++) {
-                    System.out.println(auxiliar.get(i).getId() + " " + auxiliar.get(i).getNombre() + " " + auxiliar.get(i).getApellido()+ " " + auxiliar.get(i).getFechaEntrada()+ " " + auxiliar.get(i).getId_supervisor());
+                    System.out.println(auxiliar.get(i).getId() + " " + auxiliar.get(i).getNombre() + " " + auxiliar.get(i).getApellido() + " " + auxiliar.get(i).getFechaEntrada() + " " + auxiliar.get(i).getId_supervisor());
                 }
             }
             st.close();
@@ -182,14 +181,13 @@ public class AuxiliarDAO {
         return auxiliar;
 
     }
-      
-        public boolean updateAuxiliar(int a, String nombre, String apellido, String fechaEntrada,String turno, int id_supervisor) throws SQLException {
+
+    public boolean updateAuxiliar(int a, String nombre, String apellido, String fechaEntrada, String turno, int id_supervisor) throws SQLException {
         boolean result = false;
         Connection connection = DbUtil.getConnection();
-        String query = "update auxiliar set nombre_auxiliar = ?, apellido_auxiliar = ?, fecha_entrada = ?, turno = ?, id_supervisor = ? where id_auxiliar = "+a;
+        String query = "update auxiliar set nombre_auxiliar = ?, apellido_auxiliar = ?, fecha_entrada = ?, turno = ?, id_supervisor = ? where id_auxiliar = " + a;
         PreparedStatement preparedStmt = null;
-     
-        
+
         try {
             preparedStmt = connection.prepareStatement(query);
             preparedStmt.setString(1, nombre);
@@ -197,9 +195,7 @@ public class AuxiliarDAO {
             preparedStmt.setString(3, fechaEntrada);
             preparedStmt.setString(4, turno);
             preparedStmt.setInt(5, id_supervisor);
-          
-            
-            
+
             if (preparedStmt.executeUpdate() > 0) {
                 result = true;
             }
@@ -210,5 +206,5 @@ public class AuxiliarDAO {
 
         return result;
     }
-      
+
 }

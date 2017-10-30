@@ -42,7 +42,7 @@ public class EliminarSolicitantes extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet EliminarSolicitantes</title>");            
+            out.println("<title>Servlet EliminarSolicitantes</title>");
             out.println("</head>");
             out.println("<body>");
             out.println("<h1>Servlet EliminarSolicitantes at " + request.getContextPath() + "</h1>");
@@ -63,21 +63,19 @@ public class EliminarSolicitantes extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-      
-        
-          ArrayList<Solicitante> solicitantes =new ArrayList<>();
+
+        ArrayList<Solicitante> solicitantes = new ArrayList<>();
         try {
             SolicitanteDAO a = new SolicitanteDAO();
             solicitantes = a.getAllSolicitante();
             request.setAttribute("solicitantes", solicitantes);
-            RequestDispatcher rd = getServletContext().getRequestDispatcher("/EliminarSolicitante.jsp"); 
-             rd.forward(request, response); 
+            RequestDispatcher rd = getServletContext().getRequestDispatcher("/EliminarSolicitante.jsp");
+            rd.forward(request, response);
 
         } catch (SQLException ex) {
             Logger.getLogger(EliminarSolicitantes.class.getName()).log(Level.SEVERE, null, ex);
-        } 
-        
-        
+        }
+
     }
 
     /**
@@ -91,17 +89,16 @@ public class EliminarSolicitantes extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-     
-        
-        int idS =Integer.parseInt(request.getParameter("idSolicitante"));
-        System.out.println("sadsad"+idS);
+
+        int idS = Integer.parseInt(request.getParameter("idSolicitante"));
+        System.out.println("sadsad" + idS);
         try {
             SolicitanteDAO a = new SolicitanteDAO();
             a.deleteSolicitante(idS);
         } catch (SQLException ex) {
             Logger.getLogger(EliminarSolicitantes.class.getName()).log(Level.SEVERE, null, ex);
         }
-    
+
         response.sendRedirect("Solicitantee");
     }
 

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <title>Añadir Supervisor</title>
+        <title>Editar Supervisor</title>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -73,18 +73,18 @@
 
                 </div>
                 <div class="col-sm-8 text-left"> 
-                    <h1>Añadir Supervisor</h1>
+                    <h1>Editar Supervisor</h1>
                     <p></p>
                     <hr>
                     <div class="container">   
-                                           <%
-            int id_supervisor=(Integer) request.getAttribute("id_supervisor");
-            String nombre= (String)request.getAttribute("nombre");
-            String apellido= (String)request.getAttribute("apellido");
-            String fechaEntrada= (String)request.getAttribute("fechaEntrada");
-           
+                        <%
+                            int id_supervisor = (Integer) request.getAttribute("id_supervisor");
+                            String nombre = (String) request.getAttribute("nombre");
+                            String apellido = (String) request.getAttribute("apellido");
+                            String fechaEntrada = (String) request.getAttribute("fechaEntrada");
 
-            %>
+
+                        %>
                         <form class="form-inline" action="EditarSupervisores" method="POST">
                             <div class="form-group">
                                 <label for="Idusuario">ID Supervisor:</label>

@@ -41,7 +41,7 @@ public class BuscarActivos extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet BuscarActivos</title>");            
+            out.println("<title>Servlet BuscarActivos</title>");
             out.println("</head>");
             out.println("<body>");
             out.println("<h1>Servlet BuscarActivos at " + request.getContextPath() + "</h1>");
@@ -62,14 +62,14 @@ public class BuscarActivos extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-         try {
+        try {
             ActivoDAO obj = new ActivoDAO();
-             int id=Integer.parseInt(request.getParameter("idActivo"));
-            ArrayList<Activo> lista = (ArrayList<Activo>)obj.getActivoID(id);
-            
+            int id = Integer.parseInt(request.getParameter("idActivo"));
+            ArrayList<Activo> lista = (ArrayList<Activo>) obj.getActivoID(id);
+
             request.setAttribute("listaActivosBusqueda", lista);
-            
-           request.getRequestDispatcher("BuscarActivo.jsp").forward(request, response);
+
+            request.getRequestDispatcher("BuscarActivo.jsp").forward(request, response);
 
         } catch (SQLException ex) {
             Logger.getLogger(BuscarActivos.class.getName()).log(Level.SEVERE, null, ex);

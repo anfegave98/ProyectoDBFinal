@@ -56,7 +56,7 @@
                     <a class="navbar-brand" href="index.jsp">Laboratorio</a>
                 </div>
                 <div class="collapse navbar-collapse" id="myNavbar">
-                   <ul class="nav navbar-nav">
+                    <ul class="nav navbar-nav">
                         <li><a href="index.jsp">Inicio</a></li>
                         <li><a href="Prestamos.jsp">Prestamos</a></li>
                         <li><a href="Activoo">Activos</a></li>
@@ -83,17 +83,17 @@
                             <div class="form-group">
                                 <label for="idauxiliar">ID Auxiliar:</label>
                                 <select  class="form-control" name="eliminarAuxiliar">
-                                                        <% 
-                                 if (request.getAttribute("auxiliares") != null) { 
-                                    ArrayList<Auxiliar> array = (ArrayList<Auxiliar>) request.getAttribute("auxiliares"); 
-                                     for (Auxiliar a : array) {      
-                             %> 
-                             <option value="<%=a.getId()%>"><%=a.getId()%></option> 
-                             <%      } 
-                                 } 
-                             %> 
-                         </select>   
-                         <br>
+                                    <%
+                                        if (request.getAttribute("auxiliares") != null) {
+                                            ArrayList<Auxiliar> array = (ArrayList<Auxiliar>) request.getAttribute("auxiliares");
+                                            for (Auxiliar a : array) {
+                                    %> 
+                                    <option value="<%=a.getId()%>"><%=a.getId()%></option> 
+                                    <%      }
+                                        }
+                                    %> 
+                                </select>   
+                                <br>
                             </div>
 
                             <br>

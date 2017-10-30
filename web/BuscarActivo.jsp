@@ -56,7 +56,7 @@
                     <a class="navbar-brand" href="index.jsp">Laboratorio</a>
                 </div>
                 <div class="collapse navbar-collapse" id="myNavbar">
-                   <ul class="nav navbar-nav">
+                    <ul class="nav navbar-nav">
                         <li><a href="index.jsp">Inicio</a></li>
                         <li><a href="Prestamos.jsp">Prestamos</a></li>
                         <li><a href="Activoo">Activos</a></li>
@@ -110,23 +110,23 @@
                                     for (Activo activo : list) {
 
 
-                        %>
-                        <tr>
-                            <td><%=activo.getId_activo()%></td>
-                            <td><%=activo.getTipo()%></td>
-                            <td><%=activo.getFabricante()%></td>
-                            <td><%=activo.getFecha_compra()%></td>
-                            <td><%=activo.getUltimo_mantenimiento()%></td>
-                            <td><%=activo.getEstado()%></td>
-                            <td><%=activo.getPrestado()%></td>
-                            <td><%=activo.getCalificacion()%></td>
-                            
-                            <td>
-                            </td>
-                        </tr>
-                        <% }
-                            }
-                        %>
+                            %>
+                            <tr>
+                                <td><%=activo.getId_activo()%></td>
+                                <td><%=activo.getTipo()%></td>
+                                <td><%=activo.getFabricante()%></td>
+                                <td><%=activo.getFecha_compra()%></td>
+                                <td><%=activo.getUltimo_mantenimiento()%></td>
+                                <td><%=activo.getEstado()%></td>
+                                <td><%=activo.getPrestado()%></td>
+                                <td><%=activo.getCalificacion()%></td>
+
+                                <td>
+                                </td>
+                            </tr>
+                            <% }
+                                }
+                            %>
                         </table>
                     </div>
                 </div>

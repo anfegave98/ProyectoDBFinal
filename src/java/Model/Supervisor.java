@@ -10,7 +10,7 @@ package Model;
  * @author Labin
  */
 public class Supervisor extends Trabajador {
-    
+
     public Supervisor(int id, String nombre, String apellido, String fechaEntrada) {
         super(id, nombre, apellido, fechaEntrada);
     }
@@ -19,5 +19,4 @@ public class Supervisor extends Trabajador {
         super();
     }
 
-    
 }

@@ -81,8 +81,8 @@
                     <button onclick="window.location.href = 'BuscarActivo.jsp'" type="button" type="button" class="btn-sm btn-warning">Buscar Activo</button>
                     <div class="span12">&nbsp;</div>
 
-                 
-           
+
+
                     <div class="container">           
                         <table class="table table-striped">
                             <tr>
@@ -96,29 +96,29 @@
                                 <th>Calificacion</th>
                             </tr>
                             <% if (request.getAttribute("listaActivos") != null) {
-                                ArrayList<Activo> list = (ArrayList<Activo>) request.getAttribute("listaActivos");
-                                if (list != null)
-                                    for (Activo activo : list) {
+                                    ArrayList<Activo> list = (ArrayList<Activo>) request.getAttribute("listaActivos");
+                                    if (list != null)
+                                        for (Activo activo : list) {
 
 
-                        %>
-                        <tr>
-                            <td><%=activo.getId_activo()%></td>
-                            <td><%=activo.getTipo()%></td>
-                            <td><%=activo.getFabricante()%></td>
-                            <td><%=activo.getFecha_compra()%></td>
-                            <td><%=activo.getUltimo_mantenimiento()%></td>
-                            <td><%=activo.getEstado()%></td>
-                            <td><%=activo.getPrestado()%></td>
-                            <td><%=activo.getCalificacion()%></td>
-                            
-                            <td>
-                                <button onclick="window.location.href = 'EditarActivos?id_activo=<%=activo.getId_activo()%>&tipo=<%=activo.getTipo()%>&fabricante=<%=activo.getFabricante()%>&fecha_compra=<%=activo.getFecha_compra()%>&ultimo_mantenimiento=<%=activo.getUltimo_mantenimiento()%>&estado=<%=activo.getEstado()%>&prestado=<%=activo.getPrestado()%>&calificacion=<%=activo.getCalificacion()%>'" class="btn btn-info">Editar</button>
-                            </td>
-                        </tr>
-                        <% }
-                            }
-                        %>
+                            %>
+                            <tr>
+                                <td><%=activo.getId_activo()%></td>
+                                <td><%=activo.getTipo()%></td>
+                                <td><%=activo.getFabricante()%></td>
+                                <td><%=activo.getFecha_compra()%></td>
+                                <td><%=activo.getUltimo_mantenimiento()%></td>
+                                <td><%=activo.getEstado()%></td>
+                                <td><%=activo.getPrestado()%></td>
+                                <td><%=activo.getCalificacion()%></td>
+
+                                <td>
+                                    <button onclick="window.location.href = 'EditarActivos?id_activo=<%=activo.getId_activo()%>&tipo=<%=activo.getTipo()%>&fabricante=<%=activo.getFabricante()%>&fecha_compra=<%=activo.getFecha_compra()%>&ultimo_mantenimiento=<%=activo.getUltimo_mantenimiento()%>&estado=<%=activo.getEstado()%>&prestado=<%=activo.getPrestado()%>&calificacion=<%=activo.getCalificacion()%>'" class="btn btn-info">Editar</button>
+                                </td>
+                            </tr>
+                            <% }
+                                }
+                            %>
                         </table>
                     </div>
                     <hr>

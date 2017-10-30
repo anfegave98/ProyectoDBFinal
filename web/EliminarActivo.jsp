@@ -83,17 +83,17 @@
                             <div class="form-group">
                                 <label for="tipo">Id Activo:</label>
                                 <select class="form-control" name="eliminarActivo">
-                             <% 
-                                 if (request.getAttribute("activos") != null) { 
-                                    ArrayList<Activo> array = (ArrayList<Activo>) request.getAttribute("activos"); 
-                                     for (Activo a : array) {      
-                             %> 
-                             <option value="<%=a.getId_activo()%>"><%=a.getId_activo()%></option> 
-                             <%      } 
-                                 } 
-                             %> 
-                         </select>   
-                         <br> 
+                                    <%
+                                        if (request.getAttribute("activos") != null) {
+                                            ArrayList<Activo> array = (ArrayList<Activo>) request.getAttribute("activos");
+                                            for (Activo a : array) {
+                                    %> 
+                                    <option value="<%=a.getId_activo()%>"><%=a.getId_activo()%></option> 
+                                    <%      }
+                                        }
+                                    %> 
+                                </select>   
+                                <br> 
 
                             </div>
 

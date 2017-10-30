@@ -43,7 +43,7 @@ public class Solicitantee extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet AñadirActivos</title>");            
+            out.println("<title>Servlet AñadirActivos</title>");
             out.println("</head>");
             out.println("<body>");
             out.println("<h1>Servlet AñadirActivos at " + request.getContextPath() + "</h1>");
@@ -64,39 +64,37 @@ public class Solicitantee extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-         try {
+        try {
             SolicitanteDAO obj = new SolicitanteDAO();
-            
+
             ArrayList<Solicitante> lista = (ArrayList<Solicitante>) obj.getAllSolicitante();
-            
+
             request.setAttribute("listaSolicitantess", lista);
-            
-           request.getRequestDispatcher("Solicitantes.jsp").forward(request, response);
+
+            request.getRequestDispatcher("Solicitantes.jsp").forward(request, response);
 
         } catch (SQLException ex) {
             Logger.getLogger(Solicitantee.class.getName()).log(Level.SEVERE, null, ex);
         }
 
     }
+
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-       try {
-           int id_solicitante =Integer.parseInt(request.getParameter("id_Solicitante"));
-           String nombre = (String)request.getParameter("nombre_solicitante");
-           String apellido = (String)request.getParameter("apellido_solicitante");
-           String escuela = (String)request.getParameter("escuela");
-           String tipo = (String)request.getParameter("tipo");
-         
-
+        try {
+            int id_solicitante = Integer.parseInt(request.getParameter("id_Solicitante"));
+            String nombre = (String) request.getParameter("nombre_solicitante");
+            String apellido = (String) request.getParameter("apellido_solicitante");
+            String escuela = (String) request.getParameter("escuela");
+            String tipo = (String) request.getParameter("tipo");
 
             SolicitanteDAO dao = new SolicitanteDAO();
             Solicitante tab = new Solicitante(id_solicitante, nombre, apellido, escuela, tipo);
             dao.addSolicitante(tab);
-           
-            
+
             response.sendRedirect("Solicitantee");
-            
+
         } catch (SQLException ex) {
             Logger.getLogger(Solicitantee.class.getName()).log(Level.SEVERE, null, ex);
         }

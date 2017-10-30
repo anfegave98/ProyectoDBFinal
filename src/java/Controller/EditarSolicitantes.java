@@ -5,8 +5,13 @@
  */
 package Controller;
 
+import DAO.SolicitanteDAO;
+import Model.Solicitante;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -35,7 +40,7 @@ public class EditarSolicitantes extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet EditarSolicitantes</title>");            
+            out.println("<title>Servlet EditarSolicitantes</title>");
             out.println("</head>");
             out.println("<body>");
             out.println("<h1>Servlet EditarSolicitantes at " + request.getContextPath() + "</h1>");
@@ -56,7 +61,27 @@ public class EditarSolicitantes extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        try {
+            SolicitanteDAO dao = new SolicitanteDAO();
+
+            int id_solicitante = Integer.parseInt(request.getParameter("id_solicitante"));
+            String nombre = request.getParameter("nombre");
+            String apellido = request.getParameter("apellido");
+            String escuela = request.getParameter("escuela");
+            String tipo = request.getParameter("tipo");
+
+            request.setAttribute("id_solicitante", id_solicitante);
+            request.setAttribute("nombre", nombre);
+            request.setAttribute("apellido", apellido);
+            request.setAttribute("escuela", escuela);
+            request.setAttribute("tipo", tipo);
+
+            request.getRequestDispatcher("EditarSolicitante.jsp").forward(request, response);
+
+        } catch (SQLException ex) {
+            Logger.getLogger(EditarSolicitantes.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
     }
 
     /**
@@ -70,7 +95,22 @@ public class EditarSolicitantes extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        try {
+
+            int id_solicitante = Integer.parseInt(request.getParameter("id_solicitante"));
+            String nombre = (String) request.getParameter("nombre");
+            String apellido = (String) request.getParameter("apellido");
+            String escuela = (String) request.getParameter("escuela");
+            String tipo = (String) request.getParameter("tipo");
+
+            SolicitanteDAO dao = new SolicitanteDAO();
+            dao.updateSolicitante(id_solicitante, nombre, apellido, escuela, tipo);
+
+        } catch (SQLException ex) {
+            Logger.getLogger(EditarSolicitantes.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        response.sendRedirect("Solicitantee");
+
     }
 
     /**
@@ -82,5 +122,4 @@ public class EditarSolicitantes extends HttpServlet {
     public String getServletInfo() {
         return "Short description";
     }// </editor-fold>
-
 }

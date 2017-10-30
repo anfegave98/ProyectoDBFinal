@@ -42,7 +42,7 @@ public class EliminarSupervisores extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet EliminarSupervisores</title>");            
+            out.println("<title>Servlet EliminarSupervisores</title>");
             out.println("</head>");
             out.println("<body>");
             out.println("<h1>Servlet EliminarSupervisores at " + request.getContextPath() + "</h1>");
@@ -63,20 +63,19 @@ public class EliminarSupervisores extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
-          ArrayList<Supervisor> supervisores =new ArrayList<>();
+
+        ArrayList<Supervisor> supervisores = new ArrayList<>();
         try {
             SupervisorDAO a = new SupervisorDAO();
-            supervisores=a.getAllSupervisor();
+            supervisores = a.getAllSupervisor();
             request.setAttribute("supervisores", supervisores);
-            RequestDispatcher rd = getServletContext().getRequestDispatcher("/EliminarSupervisor.jsp"); 
-             rd.forward(request, response); 
+            RequestDispatcher rd = getServletContext().getRequestDispatcher("/EliminarSupervisor.jsp");
+            rd.forward(request, response);
 
         } catch (SQLException ex) {
             Logger.getLogger(EliminarSupervisores.class.getName()).log(Level.SEVERE, null, ex);
-        } 
-        
-        
+        }
+
     }
 
     /**
@@ -90,18 +89,17 @@ public class EliminarSupervisores extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-     
-        
-        int idA=Integer.parseInt(request.getParameter("eliminarSupervisor"));
+
+        int idA = Integer.parseInt(request.getParameter("eliminarSupervisor"));
         try {
             SupervisorDAO a = new SupervisorDAO();
             a.deleteSupervidor(idA);
         } catch (SQLException ex) {
             Logger.getLogger(EliminarSupervisores.class.getName()).log(Level.SEVERE, null, ex);
         }
-    
+
         response.sendRedirect("Supervisorr");
-        
+
     }
 
     /**

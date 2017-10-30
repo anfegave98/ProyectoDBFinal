@@ -103,24 +103,24 @@
                                 <th>ID Supervisor</th>
                             </tr>
                             <% if (request.getAttribute("listaAuxiliarBusqueda") != null) {
-                                ArrayList<Auxiliar> list = (ArrayList<Auxiliar>) request.getAttribute("listaAuxiliarBusqueda");
-                                if (list != null)
-                                    for (Auxiliar aux : list) {
+                                    ArrayList<Auxiliar> list = (ArrayList<Auxiliar>) request.getAttribute("listaAuxiliarBusqueda");
+                                    if (list != null)
+                                        for (Auxiliar aux : list) {
 
 
-                        %>
-                        <tr>
-                           <td><%=aux.getId()%></td>
-                            <td><%=aux.getNombre()%></td>
-                            <td><%=aux.getApellido()%></td>
-                            <td><%=aux.getFechaEntrada()%></td>
-                            <td><%=aux.getTurno()%></td>
-                            <td><%=aux.getId_supervisor()%></td>
-                            
-                        </tr>
-                        <% }
-                            }
-                        %>
+                            %>
+                            <tr>
+                                <td><%=aux.getId()%></td>
+                                <td><%=aux.getNombre()%></td>
+                                <td><%=aux.getApellido()%></td>
+                                <td><%=aux.getFechaEntrada()%></td>
+                                <td><%=aux.getTurno()%></td>
+                                <td><%=aux.getId_supervisor()%></td>
+
+                            </tr>
+                            <% }
+                                }
+                            %>
                         </table>
                     </div>
                 </div>
